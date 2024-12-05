@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_05_203156) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_05_205514) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_05_203156) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "date"
     t.index ["document_category_id"], name: "index_documents_on_document_category_id"
     t.index ["property_id"], name: "index_documents_on_property_id"
   end
