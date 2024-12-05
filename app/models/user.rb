@@ -5,4 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :properties
+
+
+  def has_many_properties?
+    properties.count > 1
+  end
 end

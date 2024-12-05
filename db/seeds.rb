@@ -19,9 +19,12 @@ p "users destroyed"
 
 p "create users"
 py = User.create!(email: "py@mail.com", password: "coucou")
+karine = User.create!(email: "karine@mail.com", password: "coucou")
+
 p "users created"
 
 p "create properties"
 Property.create!(name: "Appart Magasin", address: "Lille", buying_date:'01-03-2020', buying_price: 200000, user: py)
 Property.create!(name: "Maison Pottier", address: "Lambersart", buying_date:'01-06-2023', buying_price: 200000, user: py)
+Property.create!(name: "Maison St Remy", address: "Saint Remy les Chevreuses", buying_date:'01-06-2023', buying_price: 400000, user: karine)
 p "properties created"

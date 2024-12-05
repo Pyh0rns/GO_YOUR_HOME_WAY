@@ -1,6 +1,10 @@
 class DashboardsController < ApplicationController
 
   def dashboard
-    @properties = current_user.properties
+    @property = current_user.properties.last
+
+    if params[:property]
+      @property = Property.find(params[:property])
+    end
   end
 end

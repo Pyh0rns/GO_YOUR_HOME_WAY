@@ -1,10 +1,12 @@
 <h1>Dashboard</h1>
 
+<h1><%= @property.name %></h1>
+
+<p><%= @property.address %></p>
 
 
-<% @properties.each do |property| %>
-<%= link_to property.name, property_path(property) %>
 
-<p><%= property.name %></p>
-
+<% if current_user.has_many_properties? %>
+  <%= link_to "Changer de propriété", properties_path %>
 <% end %>
+<%# <p>rediriger vers un index de propriétes</p> %>
