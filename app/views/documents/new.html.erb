@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>form pour ajout de document</h1>
+
+  <%= simple_form_for([@property, @document]) do |f| %>
+
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :date %>
+    <%= f.association :document_category %>
+    <%= f.input :photo %>
+    <%= f.submit %>
+  <% end %>
+</div>

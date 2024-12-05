@@ -28,12 +28,15 @@
 </ul> -->
 
   <h2>DOCUMENTS</h2>
+
+  <%= link_to "add document", new_property_document_path(@property) %>
   <% @property.documents.each do |doc| %>
     <div style="border: solid black 2px">
       <p><%= doc.name %></p>
       <p><%= doc.description %></p>
       <p><%= doc.date %></p>
       <p><%= doc.document_category.name %></p>
+      <%# ajouter photo %>
       <img src="https://plus.unsplash.com/premium_photo-1681691423266-a45af6354fc8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHJlbm92YXRpb24lMjBob3VzZXxlbnwwfHwwfHx8MA%3D%3D" alt="" style="height: 100pxs">
     </div>
   <% end %>
