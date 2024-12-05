@@ -1,0 +1,10 @@
+<h1>Dashboard</h1>
+
+
+
+<% @properties.each do |property| %>
+<%= link_to property.name, property_path(property) %>
+
+<p><%= property.name %></p>
+
+<% end %>
