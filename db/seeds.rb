@@ -36,9 +36,15 @@ p "create document categories"
   end
 p "document categories created"
 
-
 # -------------------------------------
 p "create documents"
-Document.create!(name: "Placo", description: "J'ai fait du placo", property: pottier, document_category: DocumentCategory.first, date: Date.today)
-Document.create!(name: "Devis Elec", description: "Le devis signé pour l'électricité", property: pottier, document_category: DocumentCategory.last, date: '01-09-2023' )
+Document.create!(name: "Devis Plomberie", description: "Le devis signé pour la plomberie", property: pottier, document_category: DocumentCategory.find_by(name: "Devis"), date: '01-09-2023')
+Document.create!(name: "Devis Elec", description: "Le devis signé pour l'électricité", property: pottier, document_category: DocumentCategory.find_by(name: "Devis"), date: '03-09-2023' )
 p "documents created"
+
+# -------------------------------------
+p "create action categories"
+  ['Electricité', 'Plomberie', 'Peinture', 'Isolatio '].each do |category_name|
+    ActionCategory.find_or_create_by(name: category_name)
+  end
+p "action categories created"
