@@ -1,11 +1,26 @@
 Rails.application.routes.draw do
-  devise_for :users
+  # devise_for :companies
+  # devise_for :users
+
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
+
+  devise_for :companies, controllers: {
+    sessions: 'companies/sessions',
+    registrations: 'companies/registrations'
+  }
+
+
+
   root to: "pages#home"
   resources :properties do
     resources :documents
   end
 
   get 'dashboard', to: "dashboards#dashboard"
+  get 'dashboard_pro', to: "dashboards#dashboard_pro"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

@@ -2,6 +2,12 @@
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
+
+# -------------------------------------
+p "destroy companies"
+Company.destroy_all
+p "companies destroyed"
+
 # -------------------------------------
 p "destroy documents"
 Document.destroy_all
@@ -41,6 +47,12 @@ p "create documents"
 Document.create!(name: "Devis Plomberie", description: "Le devis signé pour la plomberie", property: pottier, document_category: DocumentCategory.find_by(name: "Devis"), date: '01-09-2023')
 Document.create!(name: "Devis Elec", description: "Le devis signé pour l'électricité", property: pottier, document_category: DocumentCategory.find_by(name: "Devis"), date: '03-09-2023' )
 p "documents created"
+
+
+# -------------------------------------
+p "create companies"
+Company.create!(email: "electron@mail.com", password: "coucou", name: "Electron libre", address: "Lille", phone_number: "01 47 20 00 01", rating: 5)
+p "companies created"
 
 # -------------------------------------
 p "create action categories"
