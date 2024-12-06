@@ -1,18 +1,17 @@
 class WorkActionsController < ApplicationController
   def new
     @property = Property.find(params[:property_id])
-    @action = WorkAction.new
+    @work_action = WorkAction.new
   end
 
   def create
     @property = Property.find(params[:property_id])
-    @action = WorkAction.new(action_params)
-    # @action.actionable = current_user if current_user
-    # @action.actionable = current_company if current_company
+    @work_action = WorkAction.new(work_action_params)
+    @work_action.property = @property
+    @work_action.actionable = current_user if current_user
+    @work_action.actionable = current_company if current_company
 
-    @action.property = @property
-
-    if @action.save
+    if @work_action.save
       redirect_to dashboard_path
     else
       render :new, status: :unprocessable_entity
@@ -21,9 +20,7 @@ class WorkActionsController < ApplicationController
 
   private
 
-  def action_params
-
-    # params.require(:action).permit(:name, :description, :date, :action_category_id)
-    params.require(:action).permit(:name)
+  def work_action_params
+    params.require(:work_action).permit(:name, :description, :date, :action_category_id, photos: [])
   end
 end

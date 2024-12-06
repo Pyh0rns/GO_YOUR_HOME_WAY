@@ -5,7 +5,7 @@
 
 # -------------------------------------
 p "destroy actions"
-Action.destroy_all
+WorkAction.destroy_all
 p "actions destroyed"
 
 # -------------------------------------

@@ -4,6 +4,6 @@ class Company < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :actions, as: :actionable
+  has_many :work_actions, as: :actionable
 
 end

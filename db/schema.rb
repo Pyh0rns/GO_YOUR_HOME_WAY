@@ -20,21 +20,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_06_080651) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "actions", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.date "date"
-    t.bigint "action_category_id"
-    t.bigint "property_id"
-    t.string "actionable_type"
-    t.bigint "actionable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["action_category_id"], name: "index_actions_on_action_category_id"
-    t.index ["actionable_type", "actionable_id"], name: "index_actions_on_actionable"
-    t.index ["property_id"], name: "index_actions_on_property_id"
-  end
-
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -125,6 +110,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_06_080651) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "work_actions", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.date "date"
+    t.bigint "action_category_id"
+    t.bigint "property_id"
+    t.string "actionable_type"
+    t.bigint "actionable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["action_category_id"], name: "index_work_actions_on_action_category_id"
+    t.index ["actionable_type", "actionable_id"], name: "index_work_actions_on_actionable"
+    t.index ["property_id"], name: "index_work_actions_on_property_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

@@ -5,11 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :properties
-  has_many :actions, as: :actionable
+  has_many :work_actions, as: :actionable
 
 
 
   def has_many_properties?
-    properties.count > 1
+    properties.count.positive?
   end
 end
