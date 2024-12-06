@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>form pour ajout action</h1>
+
+  <%= simple_form_for([@property, @action]) do |f| %>
+    <%= f.input :name %>
+    <%#= f.input :description %>
+    <%#= f.input :date %>
+    <%#= f.association :action_category %>
+    <%#= f.input :photos %>
+    <%= f.submit %>
+  <% end %>
+</div>

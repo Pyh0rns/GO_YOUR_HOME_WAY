@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_05_223235) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_06_080651) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_05_223235) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "actions", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.date "date"
+    t.bigint "action_category_id"
+    t.bigint "property_id"
+    t.string "actionable_type"
+    t.bigint "actionable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["action_category_id"], name: "index_actions_on_action_category_id"
+    t.index ["actionable_type", "actionable_id"], name: "index_actions_on_actionable"
+    t.index ["property_id"], name: "index_actions_on_property_id"
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|

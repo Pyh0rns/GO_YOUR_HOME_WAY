@@ -12,11 +12,10 @@ Rails.application.routes.draw do
     registrations: 'companies/registrations'
   }
 
-
-
   root to: "pages#home"
   resources :properties do
     resources :documents
+    resources :work_actions
   end
 
   get 'dashboard', to: "dashboards#dashboard"
