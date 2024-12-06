@@ -1,47 +1,65 @@
 // Specific CSS for your home-page
-.banner-home {
+.img-home {
+  width: 50%;
+  height: 70vh;
   background-image:asset-url("img-home.webp");
+  object-fit: cover;
   background-size: cover;
-  height: 40vh;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 4px;
+}
+
+.banner-home {
+  display: flex;
+  gap: 10vh;
+  margin: 5vh auto;
+  width: 70vw;
 }
 
 .header-home {
-  padding-top: 5vh;
-  text-align: right;
-  p {
-    opacity: 0.8;
-    font-style: italic;
-  }
+  width: 50%;
 }
 
+.btn-home {
+  background-color: #188803;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  opacity: 0.8;
+  transition: ease 0.3s;
+  text-decoration: none;
 
-
-
+  &:hover {
+    opacity: 1;
+    transition: ease 0.3s;
+  }
+}
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
 
+  .banner-home {
+    display: block;
+  }
+
+  .img-home {
+    width: 100%;
+    display: none;
+  }
 
   .header-home {
-    padding-top: 1vh;
-    p {
-      display: none;
-    }
-  }
-  .banner-home {
-    background-position: top;
+    width: 100%;
   }
 }
 
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  .banner-home {
-  }
-}
+// // Medium devices (tablets, 768px and up)
+// @media (min-width: 768px) {
+//   // .banner-home {
+//   // }
+// }
 
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  .banner-home {
-    height: 70vh;
-  }
-}
+// // Large devices (desktops, 992px and up)
+// @media (min-width: 992px) {
+//   .banner-home {
+//   }
+// }
