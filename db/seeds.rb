@@ -49,10 +49,13 @@ p "document categories created"
 
 # -------------------------------------
 p "create documents"
-Document.create!(name: "Devis Plomberie", description: "Le devis signé pour la plomberie", property: pottier, document_category: DocumentCategory.find_by(name: "Devis"), date: '01-09-2023')
-Document.create!(name: "Devis Elec", description: "Le devis signé pour l'électricité", property: pottier, document_category: DocumentCategory.find_by(name: "Devis"), date: '03-09-2023' )
+doc = Document.create!(name: "Devis Plomberie", description: "Le devis signé pour la plomberie", property: pottier, document_category: DocumentCategory.find_by(name: "Devis"), date: '01-09-2023')
+image_path = Rails.root.join('app', 'assets', 'images', 'devis.webp')
+doc.photo.attach(io: File.open(image_path), filename: 'devis.webp')
+doc = Document.create!(name: "Devis Elec", description: "Le devis signé pour l'électricité", property: pottier, document_category: DocumentCategory.find_by(name: "Devis"), date: '03-09-2023' )
+image_path = Rails.root.join('app', 'assets', 'images', 'devis.webp')
+doc.photo.attach(io: File.open(image_path), filename: 'devis.webp')
 p "documents created"
-
 
 # -------------------------------------
 p "create companies"
@@ -66,5 +69,18 @@ p "create action categories"
   end
 p "action categories created"
 
-WorkAction.create!(name:"Tableau électrique", description: "Tableau électrique terminé", date: Date.today, action_category: ActionCategory.find_by(name:"Electricité"), property: pottier, actionable: Company.first)
-WorkAction.create!(name:"Enduit", description: "Enduit mur droit extension terminé", date: Date.today, action_category: ActionCategory.find_by(name:"Autre"), property: pottier, actionable: User.first)
+
+# -------------------------------------
+p "create actions"
+action = WorkAction.create!(name:"Tableau électrique", description: "Tableau électrique terminé", date: Date.today, action_category: ActionCategory.find_by(name:"Electricité"), property: pottier, actionable: Company.first)
+image_paths = [Rails.root.join('app', 'assets', 'images', 'elec.jpeg')]
+action.photos.attach(
+  image_paths.map { |path| { io: File.open(path), filename: File.basename(path) } }
+)
+
+action = WorkAction.create!(name:"Enduit", description: "Enduit mur droit extension terminé", date: Date.today, action_category: ActionCategory.find_by(name:"Autre"), property: pottier, actionable: User.first)
+image_paths = [Rails.root.join('app', 'assets', 'images', 'placo.jpeg')]
+action.photos.attach(
+  image_paths.map { |path| { io: File.open(path), filename: File.basename(path) } }
+)
+p "actions created"
