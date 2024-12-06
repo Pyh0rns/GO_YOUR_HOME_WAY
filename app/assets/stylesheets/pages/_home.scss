@@ -1,1 +1,47 @@
 // Specific CSS for your home-page
+.banner-home {
+  background-image:asset-url("img-home.webp");
+  background-size: cover;
+  height: 40vh;
+}
+
+.header-home {
+  padding-top: 5vh;
+  text-align: right;
+  p {
+    opacity: 0.8;
+    font-style: italic;
+  }
+}
+
+
+
+
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+
+
+  .header-home {
+    padding-top: 1vh;
+    p {
+      display: none;
+    }
+  }
+  .banner-home {
+    background-position: top;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .banner-home {
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .banner-home {
+    height: 70vh;
+  }
+}
