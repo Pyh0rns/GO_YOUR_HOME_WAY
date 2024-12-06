@@ -10,9 +10,15 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
+  <body>
+    <%= render "shared/flashes" %>
 
-    <%= yield %>
+    <div class="min-height-footer">
+      <div class="fix-footer">
+        <%= render "shared/navbar" %>
+        <%= yield %>
+      </div>
+    <%= render "shared/footer" %>
+    </div>
   </body>
 </html>
