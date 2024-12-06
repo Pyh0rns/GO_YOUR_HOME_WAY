@@ -22,6 +22,20 @@ class PropertiesController < ApplicationController
     end
   end
 
+
+  def edit
+    @property = Property.find(params[:id])
+  end
+
+  def update
+    @property = Property.find(params[:id])
+    if @property.update(property_params)
+      redirect_to dashboard_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @property = Property.find(params[:id])
     @property.destroy

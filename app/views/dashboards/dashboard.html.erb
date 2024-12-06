@@ -1,8 +1,11 @@
 <div class="container">
 
-  <h1>Dashboard</h1>
+  <h1><%= @property.name %></h1>
+  <p><%= @property.address %></p>
+
 
   <%= link_to "Ajouter une propriété", new_property_path %>
+  <%= link_to "Modifier la propriété", edit_property_path(@property) %>
   <%= link_to "delete", property_path(@property), data: {turbo_method: :delete, turbo_confirm: "Sur?"} %>
 
 
@@ -10,9 +13,7 @@
     <%= link_to "Changer de propriété", properties_path %>
   <% end %>
 
-  <h1><%= @property.name %></h1>
 
-  <p><%= @property.address %></p>
 
 
 <%# ---------- AJOUTER LES TABS POUR L'HISTORIQUE PLUS TARD ---------- %>
