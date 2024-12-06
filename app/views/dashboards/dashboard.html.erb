@@ -48,10 +48,16 @@
     </div>
   <% end %>
 
-
-
-
   <h2>ACTIONS</h2>
 
-
+  <%= link_to "ajouter une action", new_property_work_action_path(@property) %>
+    <% @property.work_actions.each do |action| %>
+    <div style="border: solid black 2px">
+      <p><%= action.name %></p>
+      <p><%= action.actionable %></p>
+      <p><%= action.description %></p>
+      <p><%= action.date %></p>
+      <img src="https://plus.unsplash.com/premium_photo-1681691423266-a45af6354fc8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHJlbm92YXRpb24lMjBob3VzZXxlbnwwfHwwfHx8MA%3D%3D" alt="" style="height: 100pxs">
+    </div>
+  <% end %>
 </div>

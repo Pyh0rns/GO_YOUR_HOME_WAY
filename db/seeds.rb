@@ -4,6 +4,11 @@
 #
 
 # -------------------------------------
+p "destroy actions"
+WorkAction.destroy_all
+p "actions destroyed"
+
+# -------------------------------------
 p "destroy companies"
 Company.destroy_all
 p "companies destroyed"
@@ -60,3 +65,6 @@ p "create action categories"
     ActionCategory.find_or_create_by(name: category_name)
   end
 p "action categories created"
+
+WorkAction.create!(name:"Tableau électrique", description: "Tableau électrique terminé", date: Date.today, action_category: ActionCategory.find_by(name:"Electricité"), property: pottier, actionable: Company.first)
+WorkAction.create!(name:"Enduit", description: "Enduit mur droit extension terminé", date: Date.today, action_category: ActionCategory.find_by(name:"Autre"), property: pottier, actionable: User.first)
