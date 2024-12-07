@@ -1,64 +1,58 @@
-<div class="container">
+<div class="dashboard-container">
+  <div class="sidebar">
+    <ul class="nav-list">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">Settings</a></li>
+      <li><a href="#">Logout</a></li>
+    </ul>
+  </div>
 
-  <h1><%= @property.name %></h1>
-  <p><%= @property.address %></p>
+  <div class="main-content">
 
-
-  <%= link_to "Ajouter une propriété", new_property_path %>
-  <%= link_to "Modifier la propriété", edit_property_path(@property) %>
-  <%= link_to "delete", property_path(@property), data: {turbo_method: :delete, turbo_confirm: "Sur?"} %>
-
-
-  <% if current_user.has_many_properties? %>
-    <%= link_to "Changer de propriété", properties_path %>
-  <% end %>
-
-
+    <h1><%= @property.name %></h1>
+    <p><%= @property.address %></p>
 
 
-<%# ---------- AJOUTER LES TABS POUR L'HISTORIQUE PLUS TARD ---------- %>
-<!-- <ul class="list-inline tabs-underlined">
-  <li>
-    <a href="#" class="tab-underlined active"><%= Date.today.year %></a>
-  </li>
-  <li>
-    <a href="#" class="tab-underlined"><%= Date.today.year - 1  %></a>
-  </li>
-    <li>
-    <a href="#" class="tab-underlined"><%= Date.today.year - 2  %></a>
-  </li>
-  <li>
-    <a href="#" class="tab-underlined">Tout l'historique</a>
-  </li>
-</ul> -->
+    <%= link_to "Ajouter une propriété", new_property_path %>
+    <%= link_to "Modifier la propriété", edit_property_path(@property) %>
+    <%= link_to "delete", property_path(@property), data: {turbo_method: :delete, turbo_confirm: "Sur?"} %>
 
-  <h2>DOCUMENTS</h2>
 
-  <%= link_to "add document", new_property_document_path(@property) %>
-  <% @property.documents.each do |doc| %>
-    <div style="border: solid black 2px">
-      <p><%= doc.name %></p>
-      <p><%= doc.description %></p>
-      <p><%= doc.date %></p>
-      <p><%= doc.document_category.name %></p>
-      <%# ajouter photo %>
-      <%= cl_image_tag doc.photo.key, height: 150 if doc.photo.attached? %>
-    </div>
-  <% end %>
+    <% if current_user.has_many_properties? %>
+      <%= link_to "Changer de propriété", properties_path %>
+    <% end %>
 
-  <h2>ACTIONS</h2>
 
-  <%= link_to "ajouter une action", new_property_work_action_path(@property) %>
-    <% @property.work_actions.each do |action| %>
-    <div style="border: solid black 2px">
-      <p><%= action.name %></p>
-      <p><%= action.actionable %></p>
-      <p><%= action.description %></p>
-      <p><%= action.date %></p>
-      <% if action.photos.attached? %>
-      <%# changer plus tard si plusieurs photos %>
-        <%= cl_image_tag action.photos.first.key, height: 150 %>
-      <% end %>
-    </div>
-  <% end %>
+    <h2>DOCUMENTS</h2>
+
+    <%= link_to "add document", new_property_document_path(@property) %>
+    <% @property.documents.each do |doc| %>
+      <div style="border: solid black 2px">
+        <p><%= doc.name %></p>
+        <p><%= doc.description %></p>
+        <p><%= doc.date %></p>
+        <p><%= doc.document_category.name %></p>
+        <%# ajouter photo %>
+        <%= cl_image_tag doc.photo.key, height: 150 if doc.photo.attached? %>
+      </div>
+    <% end %>
+
+    <h2>ACTIONS</h2>
+
+    <%= link_to "ajouter une action", new_property_work_action_path(@property) %>
+      <% @property.work_actions.each do |action| %>
+      <div style="border: solid black 2px">
+        <p><%= action.name %></p>
+        <p><%= action.actionable %></p>
+        <p><%= action.description %></p>
+        <p><%= action.date %></p>
+        <% if action.photos.attached? %>
+        <%# changer plus tard si plusieurs photos %>
+          <%= cl_image_tag action.photos.first.key, height: 150 %>
+        <% end %>
+      </div>
+    <% end %>
+
+  </div>
 </div>
