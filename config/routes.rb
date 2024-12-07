@@ -19,6 +19,12 @@ Rails.application.routes.draw do
   end
 
   get 'dashboard', to: "dashboards#dashboard"
+  get 'dashboard/documents', to: "dashboards#documents"
+
+
+
+
+
   get 'dashboard_pro', to: "dashboards#dashboard_pro"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

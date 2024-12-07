@@ -1,0 +1,15 @@
+<div class="dashboard-container">
+  <div class="sidebar">
+    <ul class="nav-list">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Profile</a></li>
+      <li><%= link_to "Documents", dashboard_documents_path(property: @property)  %></li>
+      <li><a href="#">Settings</a></li>
+      <li><a href="#">Logout</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <%= render here %>
+  </div>
+</div>
