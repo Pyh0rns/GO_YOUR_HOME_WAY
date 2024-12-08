@@ -28,6 +28,11 @@ class DashboardsController < ApplicationController
     render 'layout_dashboard', locals: {here: 'calendar'}
   end
 
+  def lists
+    @property = Property.find(params[:property])
+    render 'layout_dashboard', locals: {here: 'lists'}
+  end
+
 
 
   # LE FAIRE SUR UN AUTRE CONTROLLER ?!

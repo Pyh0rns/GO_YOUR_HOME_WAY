@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'dashboard/actions', to: "dashboards#actions"
   get 'dashboard/contacts', to: "dashboards#contacts"
   get 'dashboard/calendar', to: "dashboards#calendar"
+  get 'dashboard/lists', to: "dashboards#lists"
 
 
 
