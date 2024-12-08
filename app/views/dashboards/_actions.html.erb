@@ -1,2 +1,19 @@
 <h1>Actions</h1>
 <%= @property.name %>
+
+
+    <h2>ACTIONS</h2>
+
+    <%= link_to "ajouter une action", new_property_work_action_path(@property) %>
+      <% @property.work_actions.each do |action| %>
+      <div style="border: solid black 2px">
+        <p><%= action.name %></p>
+        <p><%= action.actionable %></p>
+        <p><%= action.description %></p>
+        <p><%= action.date %></p>
+        <% if action.photos.attached? %>
+        <%# changer plus tard si plusieurs photos %>
+          <%= cl_image_tag action.photos.first.key, height: 150 %>
+        <% end %>
+      </div>
+    <% end %>
