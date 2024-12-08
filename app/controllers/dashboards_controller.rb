@@ -13,6 +13,10 @@ class DashboardsController < ApplicationController
     render 'layout_dashboard', locals: {here: 'documents'}
   end
 
+  def actions
+    @property = Property.find(params[:property])
+    render 'layout_dashboard', locals: {here: 'actions'}
+  end
 
 
 

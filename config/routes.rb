@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: "dashboards#dashboard"
   get 'dashboard/documents', to: "dashboards#documents"
+  get 'dashboard/actions', to: "dashboards#actions"
 
 
 
