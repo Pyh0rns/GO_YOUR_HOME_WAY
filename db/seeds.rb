@@ -35,8 +35,8 @@ p "users created"
 
 # -------------------------------------
 p "create properties"
-Property.create!(name: "Appart Magasin", address: "Lille", buying_date:'01-03-2020', buying_price: 200000, user: py)
-pottier = Property.create!(name: "Maison Pottier", address: "Lambersart", buying_date:'01-06-2023', buying_price: 200000, user: py)
+Property.create!(name: "Appart Magasin", address: "Rue du Magasin, 59800, Lille", buying_date:'01-03-2020', buying_price: 200000, user: py)
+pottier = Property.create!(name: "Maison Pottier", address: "Avenue Pottier, 59130, Lambersart", buying_date:'01-06-2023', buying_price: 200000, user: py)
 Property.create!(name: "Maison St Remy", address: "Saint Remy les Chevreuses", buying_date:'01-06-2023', buying_price: 400000, user: karine)
 p "properties created"
 
@@ -84,3 +84,5 @@ action.photos.attach(
   image_paths.map { |path| { io: File.open(path), filename: File.basename(path) } }
 )
 p "actions created"
+
+p "ALL GOOD"

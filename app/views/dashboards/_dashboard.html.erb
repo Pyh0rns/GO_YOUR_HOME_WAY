@@ -1,19 +1,36 @@
-
-<h1><%= @property.name %></h1>
-<p><%= @property.address %></p>
-
-<%= link_to "Ajouter une propriété", new_property_path %>
-
-  <%= link_to "Modifier la propriété", edit_property_path(@property) %>
-  <%= link_to "delete", property_path(@property), data: {turbo_method: :delete, turbo_confirm: "Sur?"} %>
-
-  <% if current_user.has_many_properties? %>
-    <%= link_to "Changer de propriété", properties_path %>
-  <% end %>
-
+<div class="dashboard-header">
+  <div class="header-infos">
+    <h1><%= @property.name %></h1>
+  </div>
+  <div class="d-flex">
+    <% if current_user.has_many_properties? %>
+      <%= link_to "Changer de propriété", properties_path, class: "btn-dashboard" %>
+    <% end %>
+    <%= link_to "Ajouter une propriété", new_property_path, class: "btn-dashboard" %>
+  </div>
+</div>
 
 
-<h2>Récapitulatif <%= @property.name %></h2>
+<%# FAIRE VRAI CSS %>
+<div class="border d-flex">
+  <div class="w-50">
+    <h2>Récapitulatif</h2>
+    <div class="ms-5">
+      <p><i class="fa-solid fa-location-dot"></i> <%= @property.address %></p>
+      <p>Prix d'achat: <%= @property.buying_price %></p>
+      <p>Date d'achat: <%= @property.buying_date %></p>
+
+      <%# A FINIR AVEC VRAIES DONNES - FAIRE MIGRATION %>
+      <p>Surface: 90m2</p>
+      <p>Nombre de pièces: 4</p>
+      <p>ETC: etc etc</p>
+    </div>
+  </div>
+  <div style="width: 50%; height: 400px;"
+  data-controller="map"
+  data-map-marker-value="<%= cookies[:marker] %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+</div>
 
 <br><br><br><br>
 
@@ -21,9 +38,8 @@
 
 
 <h2>Mes prochaines actions</h2>
+<h2>Mes dépenses</h2>
 
 <br><br><br><br>
 
 <h2>Mes dernières actions</h2>
-
-<br><br><br><br>

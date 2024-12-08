@@ -5,6 +5,8 @@ class DashboardsController < ApplicationController
   def dashboard
     @property = current_user.properties.last
     @property = Property.find(params[:property]) if params[:property]
+    @marker = { lat: @property.latitude, lng: @property.longitude }
+    cookies[:marker] = @marker.to_json
     render 'layout_dashboard', locals: {here: 'dashboard'}
   end
 
@@ -33,6 +35,10 @@ class DashboardsController < ApplicationController
     render 'layout_dashboard', locals: {here: 'lists'}
   end
 
+  def settings
+    @property = Property.find(params[:property])
+    render 'layout_dashboard', locals: {here: 'settings'}
+  end
 
 
   # LE FAIRE SUR UN AUTRE CONTROLLER ?!

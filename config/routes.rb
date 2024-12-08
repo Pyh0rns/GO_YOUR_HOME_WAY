@@ -24,9 +24,7 @@ Rails.application.routes.draw do
   get 'dashboard/contacts', to: "dashboards#contacts"
   get 'dashboard/calendar', to: "dashboards#calendar"
   get 'dashboard/lists', to: "dashboards#lists"
-
-
-
+  get 'dashboard/settings', to: "dashboards#settings"
 
 
   get 'dashboard_pro', to: "dashboards#dashboard_pro"
