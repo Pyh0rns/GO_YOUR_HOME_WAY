@@ -24,14 +24,20 @@
   }
 }
 
-.dashboard-recap {
+.dashboard-card {
   border-radius: 4px;
   border: #D2D5D4;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 5vh;
+  padding: 3vh;
+
+}
+
+.dashboard-recap {
   display: flex ;
   .recap-infos-main {
     width: 50%;
-    margin: 3vh;
+
     .recap-infos {
       margin: 5vh;
     }

@@ -12,7 +12,7 @@
 
 
 <%# =============== RECAPITULATIF =============== %>
-<div class="dashboard-recap">
+<div class="dashboard-card dashboard-recap">
   <div class="recap-infos-main">
     <h2>Récapitulatif</h2>
     <div class="recap-infos">
@@ -27,19 +27,37 @@
     </div>
   </div>
   <div class="recap-map"
-  data-controller="map"
-  data-map-marker-value="<%= cookies[:marker] %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    data-controller="map"
+    data-map-marker-value="<%= cookies[:marker] %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
 
-<br><br><br><br>
+
+
+<div class="dashboard-card" style="height:400px">
+
+  <h2>Mes prochaines actions</h2>
+  <div class="m-5">
+    <p>Voir avec le calendrier</p>
+    <p>Voir comment lier properties et companies</p>
+    <p>Voir comment faire prise de rdv</p>
+  </div>
+</div>
+
+<div class="dashboard-card" style="height:400px">
+
+  <h2>Mes Dépenses</h2>
+  <div class="m-5">
+    <p>Faire cette rubrique dans la sidebar?</p>
+    <p>Prix d'achat: <%= @property.buying_price %></p>
+    <p>Frais de Notaire: 10000</p>
+    <p>Travaux: 10000</p>
+    <p>Matériel: 1000</p>
+    <p>Total: 250000</p>
+  </div>
+</div>
 
 
 
-
-<h2>Mes prochaines actions</h2>
-<h2>Mes dépenses</h2>
-
-<br><br><br><br>
-
-<h2>Mes dernières actions</h2>
+<h2>ETC</h2>

@@ -20,6 +20,7 @@
 
 <%# rendre cliquable le document (photo) et l'afficher dans une modale %>
 <%# permettre le téléchargement de ce document %>
+
 <% @property.documents.each do |doc| %>
   <div class="card-document">
     <% if doc.photo.attached? %>
