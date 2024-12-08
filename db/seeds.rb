@@ -42,7 +42,7 @@ p "properties created"
 
 # -------------------------------------
 p "create document categories"
-  ['Photo', 'DPE', 'Facture', 'Devis', 'Autre'].each do |category_name|
+  ['Photo', 'DPE', 'Facture', 'Devis', 'Plan', 'Autre'].each do |category_name|
     DocumentCategory.find_or_create_by(name: category_name)
   end
 p "document categories created"
@@ -64,7 +64,7 @@ p "companies created"
 
 # -------------------------------------
 p "create action categories"
-  ['Electricité', 'Plomberie', 'Peinture', 'Isolation', 'Autre'].each do |category_name|
+  ['Electricité', 'Plomberie', 'Peinture', 'Isolation', 'Décoration', 'Autre'].each do |category_name|
     ActionCategory.find_or_create_by(name: category_name)
   end
 p "action categories created"
