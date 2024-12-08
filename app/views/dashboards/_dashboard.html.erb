@@ -11,11 +11,11 @@
 </div>
 
 
-<%# FAIRE VRAI CSS %>
-<div class="border d-flex">
-  <div class="w-50">
+<%# =============== RECAPITULATIF =============== %>
+<div class="dashboard-recap">
+  <div class="recap-infos-main">
     <h2>Récapitulatif</h2>
-    <div class="ms-5">
+    <div class="recap-infos">
       <p><i class="fa-solid fa-location-dot"></i> <%= @property.address %></p>
       <p>Prix d'achat: <%= @property.buying_price %></p>
       <p>Date d'achat: <%= @property.buying_date %></p>
@@ -26,7 +26,7 @@
       <p>ETC: etc etc</p>
     </div>
   </div>
-  <div style="width: 50%; height: 400px;"
+  <div class="recap-map"
   data-controller="map"
   data-map-marker-value="<%= cookies[:marker] %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
