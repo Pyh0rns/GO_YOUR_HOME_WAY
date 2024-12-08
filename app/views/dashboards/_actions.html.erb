@@ -1,19 +1,43 @@
 <h1>Actions</h1>
 <%= @property.name %>
+<%= link_to "ajouter une action", new_property_work_action_path(@property) %>
 
 
-    <h2>ACTIONS</h2>
+<%# a voir en fonction de cb de temps ont pris les travaux %>
+<ul class="list-inline tabs-underlined mt-5">
+  <li>
+    <a href="#" class="tab-underlined active">Tout</a>
+  </li>
+  <li>
+    <a href="#" class="tab-underlined"><%= @property.work_actions.last.created_at.year %></a>
+  </li>
+  <li>
+    <a href="#" class="tab-underlined"><%= @property.work_actions.last.created_at.year - 1 %></a>
+    <a href="#" class="tab-underlined"><%= @property.work_actions.last.created_at.year - 2 %></a>
+  </li>
+</ul>
 
-    <%= link_to "ajouter une action", new_property_work_action_path(@property) %>
-      <% @property.work_actions.each do |action| %>
-      <div style="border: solid black 2px">
-        <p><%= action.name %></p>
-        <p><%= action.actionable %></p>
-        <p><%= action.description %></p>
-        <p><%= action.date %></p>
-        <% if action.photos.attached? %>
-        <%# changer plus tard si plusieurs photos %>
-          <%= cl_image_tag action.photos.first.key, height: 150 %>
-        <% end %>
-      </div>
+
+
+<% @property.work_actions.each do |action| %>
+
+  <div class="card-action">
+    <% if action.photos.attached? %>
+      <%# changer plus tard si plusieurs photos -> carousel %>
+      <%= cl_image_tag action.photos.first.key %>
+    <% else %>
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
     <% end %>
+    <div class="card-action-infos">
+      <h2><%= action.name %></h2>
+      <p><%= action.description %></p>
+      <p><%= action.date %></p>
+      <% if action.actionable.is_a?(Company) %>
+      <%# transformer le nom de l'entreprise en linkto %>
+        <p>réalisé par: <%= action.actionable.name %></p>
+      <% else %>
+        <p>réalisé par vous même</p>
+      <% end %>
+    </div>
+  </div>
+<% end %>

@@ -2,19 +2,20 @@
 <h1><%= @property.name %></h1>
 <p><%= @property.address %></p>
 
+<%= link_to "Ajouter une propriété", new_property_path %>
+
+  <%= link_to "Modifier la propriété", edit_property_path(@property) %>
+  <%= link_to "delete", property_path(@property), data: {turbo_method: :delete, turbo_confirm: "Sur?"} %>
+
+  <% if current_user.has_many_properties? %>
+    <%= link_to "Changer de propriété", properties_path %>
+  <% end %>
+
+
+
 <h2>Récapitulatif <%= @property.name %></h2>
 
 <br><br><br><br>
-
-
-<%= link_to "Ajouter une propriété", new_property_path %>
-<%= link_to "Modifier la propriété", edit_property_path(@property) %>
-<%= link_to "delete", property_path(@property), data: {turbo_method: :delete, turbo_confirm: "Sur?"} %>
-
-
-<% if current_user.has_many_properties? %>
-  <%= link_to "Changer de propriété", properties_path %>
-<% end %>
 
 
 

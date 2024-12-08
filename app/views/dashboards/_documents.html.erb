@@ -1,7 +1,25 @@
 <h1>Documents</h1>
 <%= @property.name %>
-
 <%= link_to "add document", new_property_document_path(@property) %>
+
+<%# a voir en fonction de cb de temps ont pris les travaux %>
+<ul class="list-inline tabs-underlined mt-5">
+  <li>
+    <a href="#" class="tab-underlined active">Tout</a>
+  </li>
+  <li>
+    <a href="#" class="tab-underlined"><%= @property.work_actions.last.created_at.year %></a>
+  </li>
+  <li>
+    <a href="#" class="tab-underlined"><%= @property.work_actions.last.created_at.year - 1 %></a>
+    <a href="#" class="tab-underlined"><%= @property.work_actions.last.created_at.year - 2 %></a>
+  </li>
+</ul>
+
+
+
+<%# rendre cliquable le document (photo) et l'afficher dans une modale %>
+<%# permettre le téléchargement de ce document %>
 <% @property.documents.each do |doc| %>
   <div class="card-document">
     <% if doc.photo.attached? %>
