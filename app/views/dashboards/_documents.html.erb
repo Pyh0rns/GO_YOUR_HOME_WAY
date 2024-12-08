@@ -1,19 +1,19 @@
 <h1>Documents</h1>
 <%= @property.name %>
 
-
-
-
-    <h2>DOCUMENTS</h2>
-
-    <%= link_to "add document", new_property_document_path(@property) %>
-    <% @property.documents.each do |doc| %>
-      <div style="border: solid black 2px">
-        <p><%= doc.name %></p>
-        <p><%= doc.description %></p>
-        <p><%= doc.date %></p>
-        <p><%= doc.document_category.name %></p>
-        <%# ajouter photo %>
-        <%= cl_image_tag doc.photo.key, height: 150 if doc.photo.attached? %>
-      </div>
+<%= link_to "add document", new_property_document_path(@property) %>
+<% @property.documents.each do |doc| %>
+  <div class="card-document">
+    <% if doc.photo.attached? %>
+      <%= cl_image_tag doc.photo.key %>
+    <% else %>
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
     <% end %>
+    <div class="card-document-infos">
+      <h2><%= doc.name %></h2>
+      <p><%= doc.description %></p>
+      <p><%= doc.date %></p>
+      <p><%= doc.document_category.name %></p>
+    </div>
+  </div>
+<% end %>
