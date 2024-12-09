@@ -7,6 +7,6 @@
     <%= f.input :date %>
     <%= f.association :action_category %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-    <%= f.submit %>
+    <%= f.submit class: "btn-dashboard" %>
   <% end %>
 </div>

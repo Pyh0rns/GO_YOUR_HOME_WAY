@@ -4,6 +4,7 @@ source "https://rubygems.org"
 # add by PY
 gem "cloudinary"
 gem "geocoder"
+gem "pg_search"
 
 
 ruby "3.3.5"

@@ -1,7 +1,22 @@
-<h1>Companies#index</h1>
-<p>Find me in app/views/companies/index.html.erb</p>
-<ul>
-  <% @companies.each do |company| %>
-    <li><%= link_to company.name, company_path(company) %></li>
+<div class="container">
+
+  <h1>Companies#index</h1>
+  <p>Find me in app/views/companies/index.html.erb</p>
+
+
+  <%= form_with url: companies_path, method: :get, class: "w-25 d-flex" do %>
+    <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Type a keyword"
+      %>
+    <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
   <% end %>
-</ul>
+
+
+  <ul class="mt-5">
+    <% @companies.each do |company| %>
+      <li><%= link_to company.name, company_path(company) %></li>
+    <% end %>
+  </ul>
+</div>

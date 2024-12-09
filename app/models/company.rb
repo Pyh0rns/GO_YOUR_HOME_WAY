@@ -8,4 +8,12 @@ class Company < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
+  include PgSearch::Model
+  # ajouter plus tard recherche par localisation et spécialité
+  pg_search_scope :search,
+  against: [ :name ],
+  using: {
+    tsearch: { prefix: true }
+  }
+
 end

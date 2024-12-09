@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
   def index
     @companies = Company.all
+    @companies = Company.search(params[:query]) if params[:query].present?
   end
 
   def show
