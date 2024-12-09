@@ -1,7 +1,8 @@
 <h1>Actions</h1>
-<%= @property.name %>
-<%= link_to "ajouter une action", new_property_work_action_path(@property) %>
-
+<div class="d-flex justify-content-between align-items-center me-5">
+  <%= @property.name %>
+  <%= link_to "ajouter une action", new_property_work_action_path(@property), class: "btn-dashboard" %>
+</div>
 
 <%# a voir en fonction de cb de temps ont pris les travaux %>
 <ul class="list-inline tabs-underlined mt-5">
