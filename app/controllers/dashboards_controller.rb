@@ -1,6 +1,6 @@
 class DashboardsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :dashboard_pro ]
-
+  skip_before_action :authenticate_user!, only: [:dashboard_pro ]
+  before_action :set_property, except: [:dashboard, :dashboard_pro]
 
   def dashboard
     @property = current_user.properties.last
@@ -11,32 +11,26 @@ class DashboardsController < ApplicationController
   end
 
   def documents
-    @property = Property.find(params[:property])
     render 'layout_dashboard', locals: {here: 'documents'}
   end
 
   def actions
-    @property = Property.find(params[:property])
     render 'layout_dashboard', locals: {here: 'actions'}
   end
 
   def contacts
-    @property = Property.find(params[:property])
     render 'layout_dashboard', locals: {here: 'contacts'}
   end
 
   def calendar
-    @property = Property.find(params[:property])
     render 'layout_dashboard', locals: {here: 'calendar'}
   end
 
   def lists
-    @property = Property.find(params[:property])
     render 'layout_dashboard', locals: {here: 'lists'}
   end
 
   def settings
-    @property = Property.find(params[:property])
     render 'layout_dashboard', locals: {here: 'settings'}
   end
 
@@ -45,5 +39,10 @@ class DashboardsController < ApplicationController
   def dashboard_pro
 
 
+  end
+
+
+  def set_property
+    @property = Property.find(params[:property])
   end
 end
