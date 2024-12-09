@@ -1,7 +1,30 @@
 <h1>contacts</h1>
-<%= current_user.email %>
 <p>Vos contacts</p>
 
+<p>Barre de recherche par nom, spécialité, localisation?</p>
 
-<%# A faire %>
-<%= Company.first.name %>
+<div class="border p-3 my-3 shadow-sm w-50">
+  <p>Mes artisans en favoris</p>
+  <p>Aucun favoris pour le moment</p>
+</div>
+<%# FAIRE CA DANS LE CONTROLLER %>
+<% property_work_company = @property.work_actions.select{|action| action.actionable.is_a?(Company)} %>
+<div class="border p-3 my-3 shadow-sm w-50">
+<% if property_work_company.any? %>
+<p>Sont intervenus chez vous:</p>
+  <% property_work_company.each do |work| %>
+    <p><%= work.actionable.name %></p>
+    <p><%= work.actionable.email %></p>
+  <% end %>
+<% end %>
+</div>
+
+
+<div class="border p-3 my-3 shadow-sm w-50">
+  <p>Sont venus faire un devis:</p>
+  <p>Aucun devis pour le moment</p>
+</div>
+
+
+
+<%= link_to 'Découvrir les artisans', companies_path, class:"btn-dashboard w-25" %>

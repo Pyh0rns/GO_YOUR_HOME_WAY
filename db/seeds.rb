@@ -60,6 +60,7 @@ p "documents created"
 # -------------------------------------
 p "create companies"
 Company.create!(email: "electron@mail.com", password: "coucou", name: "Electron libre", address: "Lille", phone_number: "01 47 20 00 01", rating: 5)
+Company.create!(email: "plomberie@mail.com", password: "coucou", name: "Plombier du Nord", address: "Lille", phone_number: "01 47 20 00 01", rating: 5)
 p "companies created"
 
 # -------------------------------------

@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :work_actions
   end
 
+  resources :companies, only: [:index, :show]
+
   get 'dashboard', to: "dashboards#dashboard"
   get 'dashboard/documents', to: "dashboards#documents"
   get 'dashboard/actions', to: "dashboards#actions"

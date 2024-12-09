@@ -23,8 +23,21 @@
 
   <div class="card-action">
     <% if action.photos.attached? %>
+      <% action.photos.each do |photo| %>
+        <%= cl_image_tag photo.key %>
+      <% end %>
+
+<%# A FINIR %>
+<!-- <div data-controller="carousel" class="swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">Slide 1</div>
+    <div class="swiper-slide">Slide 2</div>
+    <div class="swiper-slide">Slide 3</div>
+  </div>
+</div> -->
+
       <%# changer plus tard si plusieurs photos -> carousel %>
-      <%= cl_image_tag action.photos.first.key %>
+      <%#= cl_image_tag action.photos.first.key %>
     <% else %>
       <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
     <% end %>
