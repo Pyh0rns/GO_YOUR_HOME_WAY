@@ -74,7 +74,7 @@ p "action categories created"
 # -------------------------------------
 p "create actions"
 action = WorkAction.create!(name:"Tableau électrique", description: "Tableau électrique terminé", date: Date.today, action_category: ActionCategory.find_by(name:"Electricité"), property: pottier, actionable: Company.first)
-image_paths = [Rails.root.join('app', 'assets', 'images', 'elec.jpeg')]
+image_paths = [Rails.root.join('app', 'assets', 'images', 'elec.jpeg'), Rails.root.join('app', 'assets', 'images', 'elec2.jpeg')]
 action.photos.attach(
   image_paths.map { |path| { io: File.open(path), filename: File.basename(path) } }
 )

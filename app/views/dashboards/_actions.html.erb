@@ -17,16 +17,13 @@
   </li>
 </ul>
 
+
 <% @property.work_actions.each do |action| %>
 
   <div class="card-action">
     <% if action.photos.attached? %>
-      <% action.photos.each do |photo| %>
-        <%= cl_image_tag photo.key %>
-      <% end %>
-
       <%# changer plus tard si plusieurs photos -> carousel %>
-      <%#= cl_image_tag action.photos.first.key %>
+      <%= cl_image_tag action.photos.first.key %>
     <% else %>
       <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
     <% end %>
@@ -34,7 +31,6 @@
       <h2><%= action.name %></h2>
       <p><%= action.description %></p>
       <% if action.actionable.is_a?(Company) %>
-      <%# transformer le nom de l'entreprise en linkto %>
         <p>réalisé par: <%= link_to action.actionable.name, company_path(action.actionable) %>, le: <%= action.date %> </p>
       <% else %>
         <p>réalisé par vous même, le: <%= action.date %> </p>
