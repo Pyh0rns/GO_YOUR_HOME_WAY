@@ -19,6 +19,15 @@
 
 
 
+<div data-controller="carousel" class="swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">Slide 1</div>
+    <div class="swiper-slide">Slide 2</div>
+    <div class="swiper-slide">Slide 3</div>
+  </div>
+</div>
+
+
 <% @property.work_actions.each do |action| %>
 
   <div class="card-action">
@@ -44,12 +53,11 @@
     <div class="card-action-infos">
       <h2><%= action.name %></h2>
       <p><%= action.description %></p>
-      <p><%= action.date %></p>
       <% if action.actionable.is_a?(Company) %>
       <%# transformer le nom de l'entreprise en linkto %>
-        <p>réalisé par: <%= action.actionable.name %></p>
+        <p>réalisé par: <%= link_to action.actionable.name, company_path(action.actionable) %>, le: <%= action.date %> </p>
       <% else %>
-        <p>réalisé par vous même</p>
+        <p>réalisé par vous même, le: <%= action.date %> </p>
       <% end %>
     </div>
   </div>
