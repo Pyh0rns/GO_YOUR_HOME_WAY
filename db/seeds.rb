@@ -37,7 +37,7 @@ p "users created"
 p "create properties"
 Property.create!(name: "Appart Magasin", address: "Rue du Magasin, 59800, Lille", buying_date:'01-03-2020', buying_price: 200000, user: py)
 pottier = Property.create!(name: "Maison Pottier", address: "Avenue Pottier, 59130, Lambersart", buying_date:'01-06-2023', buying_price: 200000, user: py)
-Property.create!(name: "Maison St Remy", address: "Saint Remy les Chevreuses", buying_date:'01-06-2023', buying_price: 400000, user: karine)
+Property.create!(name: "Maison St Remy", address: "Rambouillet", buying_date:'01-06-2023', buying_price: 400000, user: karine)
 p "properties created"
 
 # -------------------------------------
@@ -60,7 +60,7 @@ p "documents created"
 # -------------------------------------
 p "create companies"
 Company.create!(email: "electron@mail.com", password: "coucou", name: "Electron libre", address: "Lille", phone_number: "01 47 20 00 01", rating: 5)
-Company.create!(email: "plomberie@mail.com", password: "coucou", name: "Plombier du Nord", address: "Lille", phone_number: "01 47 20 00 01", rating: 5)
+Company.create!(email: "plomberie@mail.com", password: "coucou", name: "Plombier du Nord", address: "Lambersart", phone_number: "01 47 20 00 01", rating: 5)
 p "companies created"
 
 # -------------------------------------
@@ -74,7 +74,7 @@ p "action categories created"
 # -------------------------------------
 p "create actions"
 action = WorkAction.create!(name:"Tableau électrique", description: "Tableau électrique terminé", date: Date.today, action_category: ActionCategory.find_by(name:"Electricité"), property: pottier, actionable: Company.first)
-image_paths = [Rails.root.join('app', 'assets', 'images', 'elec.jpeg'), Rails.root.join('app', 'assets', 'images', 'elec2.jpeg')]
+image_paths = [Rails.root.join('app', 'assets', 'images', 'elec.jpeg'), Rails.root.join('app', 'assets', 'images', 'elec2.jpg')]
 action.photos.attach(
   image_paths.map { |path| { io: File.open(path), filename: File.basename(path) } }
 )

@@ -9,32 +9,41 @@
     <a href="#" class="tab-underlined active">Tout</a>
   </li>
   <li>
-    <a href="#" class="tab-underlined"><%= @property.work_actions.last.created_at.year %></a>
+  <%# changer par des dates de travaux %>
+    <a href="#" class="tab-underlined">2024</a>
   </li>
   <li>
-    <a href="#" class="tab-underlined"><%= @property.work_actions.last.created_at.year - 1 %></a>
-    <a href="#" class="tab-underlined"><%= @property.work_actions.last.created_at.year - 2 %></a>
+    <a href="#" class="tab-underlined">2023</a>
+  </li>
+  <li>
+    <a href="#" class="tab-underlined">2022</a>
   </li>
 </ul>
 
 
-<% @property.work_actions.each do |action| %>
 
-  <div class="card-action">
-    <% if action.photos.attached? %>
-      <%# changer plus tard si plusieurs photos -> carousel %>
-      <%= cl_image_tag action.photos.first.key %>
-    <% else %>
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-    <% end %>
-    <div class="card-action-infos">
-      <h2><%= action.name %></h2>
-      <p><%= action.description %></p>
-      <% if action.actionable.is_a?(Company) %>
-        <p>réalisé par: <%= link_to action.actionable.name, company_path(action.actionable) %>, le: <%= action.date %> </p>
+<% if @property.work_actions.any? %>
+  <% @property.work_actions.each do |action| %>
+
+    <div class="card-action">
+      <% if action.photos.attached? %>
+        <%# changer plus tard si plusieurs photos -> carousel %>
+        <%= cl_image_tag action.photos.first.key %>
       <% else %>
-        <p>réalisé par vous même, le: <%= action.date %> </p>
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
       <% end %>
+      <div class="card-action-infos">
+        <h2><%= action.name %></h2>
+        <p><%= action.description %></p>
+        <% if action.actionable.is_a?(Company) %>
+          <p>réalisé par: <%= link_to action.actionable.name, company_path(action.actionable) %>, le: <%= action.date %> </p>
+        <% else %>
+          <p>réalisé par vous même, le: <%= action.date %> </p>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
+
+<% else %>
+  <p>Pas encore eu de travaux chez vous</p>
 <% end %>

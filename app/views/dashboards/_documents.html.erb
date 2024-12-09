@@ -8,11 +8,14 @@
     <a href="#" class="tab-underlined active">Tout</a>
   </li>
   <li>
-    <a href="#" class="tab-underlined"><%= @property.work_actions.last.created_at.year %></a>
+  <%# changer par des dates de travaux %>
+    <a href="#" class="tab-underlined">2024</a>
   </li>
   <li>
-    <a href="#" class="tab-underlined"><%= @property.work_actions.last.created_at.year - 1 %></a>
-    <a href="#" class="tab-underlined"><%= @property.work_actions.last.created_at.year - 2 %></a>
+    <a href="#" class="tab-underlined">2023</a>
+  </li>
+  <li>
+    <a href="#" class="tab-underlined">2022</a>
   </li>
 </ul>
 
@@ -21,18 +24,23 @@
 <%# rendre cliquable le document (photo) et l'afficher dans une modale %>
 <%# permettre le téléchargement de ce document %>
 
-<% @property.documents.each do |doc| %>
-  <div class="card-document">
-    <% if doc.photo.attached? %>
-      <%= cl_image_tag doc.photo.key %>
-    <% else %>
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-    <% end %>
-    <div class="card-document-infos">
-      <h2><%= doc.name %></h2>
-      <p><%= doc.description %></p>
-      <p><%= doc.date %></p>
-      <p><%= doc.document_category.name %></p>
+<% if @property.documents.any? %>
+
+  <% @property.documents.each do |doc| %>
+    <div class="card-document">
+      <% if doc.photo.attached? %>
+        <%= cl_image_tag doc.photo.key %>
+      <% else %>
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <% end %>
+      <div class="card-document-infos">
+        <h2><%= doc.name %></h2>
+        <p><%= doc.description %></p>
+        <p><%= doc.date %></p>
+        <p><%= doc.document_category.name %></p>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+  <% else %>
+    <p>Pas encore de documents pour votre propriété</p>
+  <% end %>

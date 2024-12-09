@@ -10,6 +10,6 @@ class User < ApplicationRecord
 
 
   def has_many_properties?
-    properties.count.positive?
+    properties.count > 1
   end
 end
