@@ -1,8 +1,30 @@
-  <%= simple_form_for(property) do |f| %>
-    <%= f.input :name %>
-    <%= f.input :address %>
-    <%= f.input :buying_price %>
-    <%= f.input :fee_price %>
-    <%= f.input :buying_date %>
-    <%= f.submit class: "btn-dashboard" %>
-  <% end %>
+<%= simple_form_for(property) do |f| %>
+  <%= f.input :name, label: 'Nom de la propriété' %>
+  <%= f.input :address, label: 'adresse' %>
+  <%= f.input :buying_price, label: "Prix d'achat" %>
+  <%# ! Vérifier si c'est bien la catégorie "Frais de notaire" %>
+  <%= f.input :fee_price, label: 'Frais de notaire' %>
+  <%=
+    f.input :buying_date,
+            label: "Date d'achat",
+            as: :date,
+            order: %i[day month year],
+            start_year: 1800,
+            end_year: Date.today.year + 2,
+            input_html: {
+              day: {
+                class: 'form-control',
+                placeholder: 'JJ',
+              },
+              month: {
+                class: 'form-control',
+                placeholder: 'MM',
+              },
+              year: {
+                class: 'form-control',
+                placeholder: 'AAAA',
+              },
+            }
+  %>
+  <%= f.submit 'Modifier', class: 'btn-dashboard' %>
+<% end %>
