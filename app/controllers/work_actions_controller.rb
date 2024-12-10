@@ -6,10 +6,15 @@ class WorkActionsController < ApplicationController
 
   def create
     @property = Property.find(params[:property_id])
-    @work_action = WorkAction.new(work_action_params)
-    @work_action.property = @property
-    @work_action.actionable = current_user if current_user
-    @work_action.actionable = current_company if current_company
+
+    if params[:work_action][:actionable_id].nil? || params[:work_action][:actionable_id].empty?
+      @work_action = @property.work_actions.new(work_action_params)
+      @work_action.actionable = current_user
+    elsif params[:work_action][:actionable_id]
+      @company = Company.find(params[:work_action][:actionable_id])
+      @work_action = @property.work_actions.new(work_action_params)
+      @work_action.actionable = @company
+    end
 
     if @work_action.save
       redirect_to dashboard_path
@@ -21,6 +26,6 @@ class WorkActionsController < ApplicationController
   private
 
   def work_action_params
-    params.require(:work_action).permit(:name, :description, :date, :action_category_id, photos: [])
+    params.require(:work_action).permit(:name, :description, :date, :actionable_id, :action_category_id, photos: [])
   end
 end

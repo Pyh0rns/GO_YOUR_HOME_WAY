@@ -6,7 +6,41 @@
     <%= f.input :description %>
     <%= f.input :date %>
     <%= f.association :action_category %>
+    <%# trouver les companies qui sont en favoris %>
+
+
+
+    <% if @property.favorites.any? %>
+      <div data-controller="checkbox-form-action">
+        <p>
+        Effectué par une entreprise?
+        <input data-action="click->checkbox-form-action#toggle" type="checkbox" id="myCheckbox" name="myCheckbox" value="value1" checked>
+        </p>
+
+        <%# METTRE CA AILLEURS %>
+        <% fav_companies = [] %>
+        <% @property.favorites.each do |fav| %>
+          <% fav_companies << Company.find(fav.company_id) %>
+        <% end %>
+        <div data-checkbox-form-action-target="field" class="">
+        <%= f.input :actionable_id, collection: fav_companies, label: "Sélectionner une entreprise" %>
+        </div>
+      </div>
+    <% else %>
+
+      <div data-controller="checkbox-form-action">
+        <p>
+        Effectué par vous même?
+        <input data-action="click->checkbox-form-action#toggle" type="checkbox" id="myCheckbox" name="myCheckbox" value="value1" checked>
+        </p>
+        <p class="d-none" data-checkbox-form-action-target="field">vous n'avez pas d'entreprises vos favoris. voir la <%= link_to "liste des entreprises", companies_path, target: "_blank" %></p>
+      </div>
+
+    <% end %>
+
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.submit class: "btn-dashboard" %>
+
+
   <% end %>
 </div>
