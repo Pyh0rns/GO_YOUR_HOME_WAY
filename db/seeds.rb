@@ -4,6 +4,11 @@
 #
 require 'json'
 
+p 'destroy list items'
+ListItem.destroy_all
+p 'list items destroyed'
+
+# -------------------------------------
 p 'destroy favorites'
 Favorite.destroy_all
 p 'favorites destroyed'
@@ -201,4 +206,12 @@ action.photos.attach(
 )
 p 'actions created'
 
+# -------------------------------------
+p 'create list items'
+ListItem.create!(property: pottier, title: 'ranger', deadline: Date.today)
+ListItem.create!(property: pottier, title: 'acheter un tournevis', deadline: Date.today + 1)
+ListItem.create!(property: pottier, title: 'peinture 2e étage', deadline: Date.today + 4)
+p 'list items created'
+
+# -------------------------------------
 p 'ALL GOOD'

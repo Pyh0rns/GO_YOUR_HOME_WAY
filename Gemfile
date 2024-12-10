@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'cloudinary'
 gem 'geocoder'
 gem 'pg_search'
+gem "simple_calendar"
 
 # add by Alex
 gem 'rails-i18n', '~> 7.0.0' # Traduction des inputs anglais -> Francais

@@ -87,10 +87,15 @@
 <div class="dashboard-card" style="height:400px">
   <h2>Mes prochaines actions</h2>
   <div class="m-5">
-    <p>Voir avec le calendrier</p>
-    <p>Voir comment lier properties et companies</p>
-    <p>Voir comment faire prise de rdv</p>
-    <p>To do list "urgent"</p>
+
+  <% @property.list_items.order(:deadline).first(3).each do |item| %>
+    <p><%= item.title %> avant le <%= item.deadline %></p>
+  <% end %>
+    <a class="btn-dashboard" href="#">Calendrier</a>
+    <a class="btn-dashboard" href="#">Voir tout</a>
+    <%#= link_to "Calendrier", dashboard_calendar_path, class: "btn-dashboard" %>
+    <%#= link_to "Voir tout", dashboard_lists_path, class: "btn-dashboard" %>
+
   </div>
 </div>
 

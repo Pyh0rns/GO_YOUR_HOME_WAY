@@ -1,3 +1,20 @@
 <h1>Calendrier</h1>
+<%= @property.name %>
+<%#= image_tag "calendar_template.png" %>
 
-<%= image_tag "calendar_template.png" %>
+<div class="calendar-lg">
+  <%= month_calendar(events: @items, attribute: :deadline) do |date| %>
+    <%= date.day %>
+    <% @items.select { |item| item.deadline.to_date == date }.each do |item| %>
+      <div class="event">
+        <%= item.title %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="calendar-sm">
+<%# A faire eventuellement plus tard pour le responsive %>
+</div>
+
+<%= link_to 'ajouter une tache', new_property_list_item_path(@property)  %>
