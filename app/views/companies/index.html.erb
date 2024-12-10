@@ -17,6 +17,14 @@
   <ul class="mt-5">
     <% @companies.each do |company| %>
       <li><%= link_to company.name, company_path(company) %></li>
+
+      <% if company.favorites.exists?(Favorite.where(property: current_user.properties.last)) %>
+        <% favorite = Favorite.where(property: current_user.properties.last).where(company: company).first %>
+        <%= link_to raw("<i class='fa-solid fa-star'></i>"), favorite_path(favorite), data: {turbo_method: :delete} %>
+      <% else %>
+        <%= link_to raw("<i class='fa-regular fa-star'></i>"), company_favorites_path(company), data: {turbo_method: :post} %>
+      <% end %>
+
     <% end %>
   </ul>
 </div>
