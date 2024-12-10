@@ -85,7 +85,7 @@ companies = JSON.parse(serialized_companies)
 companies.each do |company|
   unless company["name"].empty?
     # le mail random peut faire péter les seed si pas de chance. Juste relancer et ça devrait marcher
-    being_created = Company.create!(email: "#{company["name"].split.join + ("a".."z").to_a.sample}@mail.com", password: "coucou", name: company["name"] ,address: company[:address])
+    being_created = Company.create!(email: "#{company["name"].split.join + ("a".."z").to_a.sample}@mail.com", password: "coucou", name: company["name"], address: company["address"])
   end
   # A AJOUTER PLUS TARD LORS DE L'AJOUT DE CATEGORIES AUX COMPANIES
   # being_created.category = Category.find_by(name: company["category"])
