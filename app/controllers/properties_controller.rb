@@ -15,7 +15,7 @@ class PropertiesController < ApplicationController
     @property = Property.new(property_params)
     @property.user = current_user
     if @property.save
-      redirect_to dashboard_path
+      redirect_to dashboard_path, notice: 'Propriété créée avec succès'
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class PropertiesController < ApplicationController
   def update
     @property = Property.find(params[:id])
     if @property.update(property_params)
-      redirect_to dashboard_path
+      redirect_to dashboard_path, notice: 'Propriété modifiée avec succès'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -37,7 +37,7 @@ class PropertiesController < ApplicationController
   def destroy
     @property = Property.find(params[:id])
     @property.destroy
-    redirect_to dashboard_path
+    redirect_to dashboard_path, notice: 'Propriété supprimée avec succès'
   end
 
   private
