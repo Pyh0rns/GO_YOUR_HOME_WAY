@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_06_080651) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_10_054813) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -84,6 +84,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_06_080651) do
     t.index ["property_id"], name: "index_documents_on_property_id"
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.bigint "property_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_favorites_on_company_id"
+    t.index ["property_id"], name: "index_favorites_on_property_id"
+  end
+
   create_table "properties", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -131,5 +140,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_06_080651) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "documents", "document_categories"
   add_foreign_key "documents", "properties"
+  add_foreign_key "favorites", "companies"
+  add_foreign_key "favorites", "properties"
   add_foreign_key "properties", "users"
 end

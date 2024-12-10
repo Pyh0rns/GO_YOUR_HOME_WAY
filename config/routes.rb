@@ -18,7 +18,12 @@ Rails.application.routes.draw do
     resources :work_actions
   end
 
-  resources :companies, only: [:index, :show]
+
+  resources :companies, only: [:index, :show] do
+    resources :favorites, only: [:create]
+  end
+
+  resources :favorites, only: [:destroy]
 
   get 'dashboard', to: "dashboards#dashboard"
   get 'dashboard/documents', to: "dashboards#documents"

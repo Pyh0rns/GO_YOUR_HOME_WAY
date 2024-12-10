@@ -5,6 +5,7 @@ class Company < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :work_actions, as: :actionable
+  has_many :favorites
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
