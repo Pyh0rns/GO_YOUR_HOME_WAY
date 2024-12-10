@@ -19,17 +19,17 @@
   padding: 0;
 }
 
-.sidebar .nav-list li {
+.sidebar .nav-list > li {
   margin-bottom: 20px;
 }
 
-.sidebar .nav-list li a {
+.sidebar .nav-list > li a {
   color: #ecf0f1;
   text-decoration: none;
   font-size: 18px;
 }
 
-.sidebar .nav-list li a:hover {
+.sidebar .nav-list > li a:hover {
   text-decoration: underline;
 }
 
@@ -42,6 +42,48 @@
 
 .tab-active {
   text-decoration: underline;
+}
+
+.dropdown {
+  position: relative;
+}
+/* Hide dropdown menu by default */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  z-index: 1000;
+  width: 200px;
+}
+
+/* Dropdown menu items */
+.dropdown-menu li {
+  padding: 10px;
+  background-color: #188803;
+  margin: 0;
+}
+
+.dropdown-menu li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+
+/* Show the dropdown when active */
+.dropdown.open .dropdown-menu {
+  display: block;
+}
+
+/* Styling for dropdown toggle */
+.dropdown-toggle {
+  cursor: pointer;
+  text-decoration: none;
 }
 
 @media (max-width: 768px) {
