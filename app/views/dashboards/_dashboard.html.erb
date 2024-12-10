@@ -2,12 +2,9 @@
   <div class="header-infos">
     <h1><%= @property.name %></h1>
   </div>
-  <div class="d-flex">
-    <% if current_user.has_many_properties? %>
-      <%= link_to "Changer de propriété", properties_path, class: "btn-dashboard" %>
-    <% end %>
-    <%= link_to "Ajouter une propriété", new_property_path, class: "btn-dashboard" %>
-  </div>
+  <% if current_user.has_many_properties? %>
+    <%= link_to "Changer de propriété", properties_path, class: "btn-dashboard" %>
+  <% end %>
 </div>
 
 
@@ -33,6 +30,39 @@
   </div>
 </div>
 
+
+<%# =============== ENTREPRISES FAV =============== %>
+
+<div class="dashboard-card">
+  <h2>Mes entreprises favories</h2>
+  <div class="m-5">
+    <div class="cards-companies">
+
+      <% if @property.companies.empty? %>
+        <p>Pas encore de favoris</p>
+      <% end %>
+
+      <% @property.companies.each do |company| %>
+        <%= link_to company_path(company), class:"link_to" do  %>
+          <div class="card-company">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <div class="card-company-infos">
+              <h2><%= company.name%></h2>
+              <p><i class="fa-solid fa-location-dot"></i> <%= company.address%></p>
+              <p><%= company.email%></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="d-flex justify-content-end">
+    <%= link_to "Voir toutes les entreprises", companies_path, class:"link_to btn-dashboard btn-contacts" %>
+  </div>
+</div>
+
+
+
 <div class="dashboard-card" style="height:400px">
   <h2>Mes prochaines actions</h2>
   <div class="m-5">
@@ -42,6 +72,7 @@
     <p>To do list "urgent"</p>
   </div>
 </div>
+
 
 <div class="dashboard-card" style="height:400px">
   <h2>Mes Dépenses</h2>

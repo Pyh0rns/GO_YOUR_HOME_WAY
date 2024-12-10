@@ -1,5 +1,6 @@
 <h1>Settings</h1>
 
+<p><%= link_to "Ajouter une propriété", new_property_path %></p>
 <p><%= link_to "Modifier la propriété", edit_property_path(@property) %></p>
 <p><%= link_to "Supprimer la propriété", property_path(@property), data: {turbo_method: :delete, turbo_confirm: "Sur?"} %></p>
 <p><a href="#">Récupérer le pdf complet de l'historique de votre propriété</a></p>
