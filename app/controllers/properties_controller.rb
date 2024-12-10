@@ -1,5 +1,4 @@
 class PropertiesController < ApplicationController
-
   def index
     @properties = current_user.properties
   end
@@ -21,7 +20,6 @@ class PropertiesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
 
   def edit
     @property = Property.find(params[:id])
@@ -45,6 +43,16 @@ class PropertiesController < ApplicationController
   private
 
   def property_params
-    params.require(:property).permit(:name, :address, :buying_price, :buying_date, :fee_price )
+    params
+      .require(:property)
+      .permit(
+        :name,
+        :address,
+        :buying_price,
+        :buying_date,
+        :fee_price,
+        :surface,
+        :number_of_rooms,
+      )
   end
 end
