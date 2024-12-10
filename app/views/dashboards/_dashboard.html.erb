@@ -3,33 +3,49 @@
     <h1><%= @property.name %></h1>
   </div>
   <% if current_user.has_many_properties? %>
-    <%= link_to "Changer de propriété", properties_path, class: "btn-dashboard" %>
+    <%=
+      link_to 'Changer de propriété', properties_path, class: 'btn-dashboard'
+    %>
   <% end %>
 </div>
 
-
 <%# =============== RECAPITULATIF =============== %>
 <div class="dashboard-card dashboard-recap">
-  <div class="recap-infos-main">
-    <h2>Récapitulatif</h2>
-    <div class="recap-infos">
-      <p><i class="fa-solid fa-location-dot"></i> <%= @property.address %></p>
-      <p>Prix d'achat: <%= @property.buying_price %>€</p>
-      <p>Date d'achat: <%= @property.buying_date %></p>
+  <div class="d-flex ">
+    <div class="recap-infos-main">
+      <h2>Récapitulatif</h2>
+      <div class="recap-infos">
+        <p><i class="fa-solid fa-location-dot"></i> <%= @property.address %></p>
+        <p><strong>Prix d'achat: </strong> <%= @property.buying_price %> €</p>
+        <p>
+          <strong>Date d'achat: </strong><%=
+            @property.buying_date.strftime('%d %b %Y')
+          %>
+        </p>
 
-      <%# A FINIR AVEC VRAIES DONNES - FAIRE MIGRATION %>
-      <p>Surface: 90m2</p>
-      <p>Nombre de pièces: 4</p>
-      <p>ETC: etc etc</p>
+        <%# A FINIR AVEC VRAIES DONNES - FAIRE MIGRATION %>
+        <p><strong>Surface: </strong><%= @property.surface %>m²</p>
+        <p>
+          <strong>Nombre de pièces: </strong><%= @property.number_of_rooms %>
+        </p>
+        <p><strong>ETC :</strong> etc etc</p>
+      </div>
     </div>
+    <div
+      class="recap-map"
+      data-controller="map"
+      data-map-marker-value="<%= cookies[:marker] %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
   </div>
-  <div class="recap-map"
-    data-controller="map"
-    data-map-marker-value="<%= cookies[:marker] %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div>
+    <%=
+      link_to 'modifier',
+              edit_property_path(@property),
+              class: 'btn btn-dashboard'
+    %>
   </div>
 </div>
-
 
 <%# =============== ENTREPRISES FAV =============== %>
 
@@ -37,7 +53,6 @@
   <h2>Mes entreprises favories</h2>
   <div class="m-5">
     <div class="cards-companies">
-
       <% if @property.companies.empty? %>
         <p>Pas encore de favoris</p>
       <% end %>
@@ -45,11 +60,15 @@
       <% @property.companies.each do |company| %>
         <%= link_to company_path(company), class:"link_to" do  %>
           <div class="card-company">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <img
+              src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"
+            />
             <div class="card-company-infos">
-              <h2><%= company.name%></h2>
-              <p><i class="fa-solid fa-location-dot"></i> <%= company.address%></p>
-              <p><%= company.email%></p>
+              <h2><%= company.name %></h2>
+              <p>
+                <i class="fa-solid fa-location-dot"></i> <%= company.address %>
+              </p>
+              <p><%= company.email %></p>
             </div>
           </div>
         <% end %>
@@ -57,11 +76,13 @@
     </div>
   </div>
   <div class="d-flex justify-content-end">
-    <%= link_to "Voir toutes les entreprises", companies_path, class:"link_to btn-dashboard btn-contacts" %>
+    <%=
+      link_to 'Voir toutes les entreprises',
+              companies_path,
+              class: 'link_to btn-dashboard btn-contacts'
+    %>
   </div>
 </div>
-
-
 
 <div class="dashboard-card" style="height:400px">
   <h2>Mes prochaines actions</h2>
@@ -72,7 +93,6 @@
     <p>To do list "urgent"</p>
   </div>
 </div>
-
 
 <div class="dashboard-card" style="height:400px">
   <h2>Mes Dépenses</h2>
@@ -85,7 +105,5 @@
     <p>Total: 250000</p>
   </div>
 </div>
-
-
 
 <h2>ETC</h2>

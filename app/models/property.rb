@@ -5,7 +5,6 @@ class Property < ApplicationRecord
   has_many :favorites
   has_many :companies, through: :favorites
 
-
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 end

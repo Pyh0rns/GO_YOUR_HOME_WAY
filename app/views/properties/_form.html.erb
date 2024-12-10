@@ -1,8 +1,45 @@
-  <%= simple_form_for(property) do |f| %>
-    <%= f.input :name %>
-    <%= f.input :address %>
-    <%= f.input :buying_price %>
-    <%= f.input :fee_price %>
-    <%= f.input :buying_date %>
-    <%= f.submit class: "btn-dashboard" %>
-  <% end %>
+<%= simple_form_for(property) do |f| %>
+  <%= f.input :name, label: 'Nom de la propriété' %>
+  <%= f.input :address, label: 'adresse' %>
+  <%= f.input :buying_price, label: "Prix d'achat" %>
+  <%# ! Vérifier si c'est bien la catégorie "Frais de notaire" %>
+  <%= f.input :fee_price, label: 'Frais de notaire' %>
+  <%=
+    f.input :buying_date,
+            label: "Date d'achat",
+            as: :date,
+            order: %i[day month year],
+            start_year: 1800,
+            end_year: Date.today.year + 2,
+            input_html: {
+              day: {
+                class: 'form-control',
+                placeholder: 'JJ',
+              },
+              month: {
+                class: 'form-control',
+                placeholder: 'MM',
+              },
+              year: {
+                class: 'form-control',
+                placeholder: 'AAAA',
+              },
+            }
+  %>
+  <%=
+    f.input :surface,
+            label: 'Surface',
+            as: :select,
+            collection: %w[<100m² 100-150m² 150-200m² >200m²],
+            include_blank: 'Sélectionner une surface'
+  %>
+  <%=
+    f.input :number_of_rooms,
+            label: 'Total de pièces',
+            input_html: {
+              placeholder: '0',
+              class: 'form-control-sm fw-italic',
+            }
+  %>
+  <%= f.submit 'Modifier', class: 'btn-dashboard' %>
+<% end %>

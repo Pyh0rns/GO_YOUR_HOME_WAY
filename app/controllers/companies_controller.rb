@@ -6,9 +6,6 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find(params[:id])
-    @marker = {
-      lat: @company.latitude,
-      lng: @company.longitude
-    }
+    @marker = { lat: @company.latitude, lng: @company.longitude }
   end
 end
