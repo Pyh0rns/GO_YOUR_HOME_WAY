@@ -2,6 +2,11 @@
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
+require "json"
+
+p "destroy favorites"
+Favorite.destroy_all
+p "favorites destroyed"
 
 # -------------------------------------
 p "destroy actions"
@@ -70,6 +75,24 @@ p "create action categories"
   end
 p "action categories created"
 
+
+# -------------------------------------
+p "create real companies"
+file_path = Rails.root.join('db', 'companies.json')
+serialized_companies = File.read(file_path)
+companies = JSON.parse(serialized_companies)
+
+companies.each do |company|
+  unless company["name"].empty?
+    # le mail random peut faire péter les seed si pas de chance. Juste relancer et ça devrait marcher
+    being_created = Company.create!(email: "#{company["name"].split.join + ("a".."z").to_a.sample}@mail.com", password: "coucou", name: company["name"] ,address: company[:address])
+  end
+  # A AJOUTER PLUS TARD LORS DE L'AJOUT DE CATEGORIES AUX COMPANIES
+  # being_created.category = Category.find_by(name: company["category"])
+  # being_created.save
+end
+
+p "real companies created"
 
 # -------------------------------------
 p "create actions"
