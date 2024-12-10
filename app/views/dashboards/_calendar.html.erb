@@ -1,3 +1,21 @@
 <h1>Calendrier</h1>
+<%= @property.name %>
+<%#= image_tag "calendar_template.png" %>
 
-<%= image_tag "calendar_template.png" %>
+<div class="calendar-lg">
+  <%= month_calendar do |date| %>
+    <%= date.day %>
+  <% end %>
+</div>
+
+<div class="calendar-sm">
+  <%= week_calendar do |date| %>
+    <%= date.day %>
+  <% end %>
+</div>
+
+
+
+<a href="#">ajouter un événement</a>
+<a href="#">ajouter un rdv</a>
+<a href="#">ajouter une tache</a>
