@@ -32,3 +32,25 @@ fr:
         nov.,
         déc.,
       ]
+  devise:
+    sessions:
+      signed_in: "Connecté avec succès."
+      signed_out: "Déconnecté avec succès."
+    registrations:
+      signed_up: "Bienvenue ! Vous vous êtes inscrit avec succès."
+      updated: "Votre compte a été mis à jour."
+      destroyed: "Votre compte a été supprimé avec succès."
+    passwords:
+      send_instructions: "Vous allez recevoir un email avec les instructions de réinitialisation de votre mot de passe."
+      updated: "Votre mot de passe a été modifié avec succès."
+      send_paranoid_instructions: "Si votre email existe dans notre base de données, vous recevrez un lien de réinitialisation de mot de passe."
+    confirmations:
+      send_instructions: "Un email de confirmation vous a été envoyé."
+      confirmed: "Votre compte a été confirmé avec succès."
+    failures:
+      already_authenticated: "Vous êtes déjà connecté."
+      unauthenticated: "Vous devez vous connecter ou vous inscrire pour continuer."
+      invalid: "Email ou mot de passe incorrect."
+      last_attempt: "Vous avez un dernier essai avant que votre compte ne soit verrouillé."
+      locked: "Votre compte est verrouillé."
+      not_found_in_database: "Email ou mot de passe incorrect."
