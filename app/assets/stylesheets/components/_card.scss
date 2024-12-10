@@ -73,6 +73,61 @@
   padding: 16px;
 }
 
+
+// =============== CARD COMPANY ===============
+
+.card-company {
+  color: black;
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  opacity: 0.8;
+  transition: ease 0.3s;
+
+  &:hover {
+    opacity: 1;
+    transition: ease 0.3s;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+
+  }
+}
+
+.card-company img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-company h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-company p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-company .card-company-infos {
+  padding: 16px;
+}
+
+.cards-companies {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+
+
+
 // =============== MEDIA QUERIES ===============
 
 @media (min-width: 100px) and (max-width: 575px) {
@@ -82,5 +137,13 @@
 
   .card-action {
     width: 100%;
+  }
+
+  .cards-companies {
+    grid-template-columns: 1fr;
+  }
+
+  .card-company img {
+    display: none;
   }
 }
