@@ -24,7 +24,7 @@
 
 
 <% if @property.work_actions.any? %>
-  <% @property.work_actions.each do |action| %>
+  <% @property.work_actions.order(created_at: :desc).each do |action| %>
 
     <div class="card-action">
       <% if action.photos.attached? %>
