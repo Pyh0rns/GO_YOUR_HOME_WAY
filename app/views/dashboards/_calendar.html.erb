@@ -3,19 +3,18 @@
 <%#= image_tag "calendar_template.png" %>
 
 <div class="calendar-lg">
-  <%= month_calendar do |date| %>
+  <%= month_calendar(events: @items, attribute: :deadline) do |date| %>
     <%= date.day %>
+    <% @items.select { |item| item.deadline.to_date == date }.each do |item| %>
+      <div class="event">
+        <%= item.title %>
+      </div>
+    <% end %>
   <% end %>
 </div>
 
 <div class="calendar-sm">
-  <%= week_calendar do |date| %>
-    <%= date.day %>
-  <% end %>
+<%# A faire eventuellement plus tard pour le responsive %>
 </div>
 
-
-
-<a href="#">ajouter un événement</a>
-<a href="#">ajouter un rdv</a>
-<a href="#">ajouter une tache</a>
+<%= link_to 'ajouter une tache', new_property_list_item_path(@property)  %>

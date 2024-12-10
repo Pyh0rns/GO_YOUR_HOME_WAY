@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :properties do
     resources :documents
     resources :work_actions
+    resources :list_items
   end
 
 

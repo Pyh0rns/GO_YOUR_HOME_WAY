@@ -1,0 +1,8 @@
+<h1> new list item</h1>
+
+<%= simple_form_for([@property, @item]) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :deadline %>
+  <%= f.submit class: "btn-dashboard" %>
+
+<% end %>
