@@ -4,6 +4,18 @@
   <%= link_to "add document", new_property_document_path(@property), class: "btn-dashboard" %>
 </div>
 <%# a voir en fonction de cb de temps ont pris les travaux %>
+
+
+<div class="w-50 d-flex justify-content-between">
+  <%= link_to "Tout", dashboard_documents_path(property: @property), class: "btn-dashboard" %>
+  <% DocumentCategory.all.each do |category| %>
+    <%= link_to category.name, dashboard_documents_path(property: @property, category: category.name),class: "btn-dashboard" %>
+  <% end %>
+</div>
+  <p>pareil pour les thématiques?</p>
+  <p>trenasformer ces bouttons moches en tabs ci-dessous?</p>
+
+
 <ul class="list-inline tabs-underlined mt-5">
   <li>
     <a href="#" class="tab-underlined active">Tout</a>
@@ -20,14 +32,12 @@
   </li>
 </ul>
 
-
-
 <%# rendre cliquable le document (photo) et l'afficher dans une modale %>
 <%# permettre le téléchargement de ce document %>
 
-<% if @property.documents.any? %>
+<% if @documents.any? %>
 
-  <% @property.documents.each do |doc| %>
+  <% @documents.each do |doc| %>
     <div class="card-document">
       <% if doc.photo.attached? %>
         <%= cl_image_tag doc.photo.key %>

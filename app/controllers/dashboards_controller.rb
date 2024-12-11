@@ -11,7 +11,11 @@ class DashboardsController < ApplicationController
   end
 
   def documents
-    render 'layout_dashboard', locals: {here: 'documents'}
+    @documents = @property.documents
+    if params[:category]
+      @documents = @property.documents.select {|doc| doc.document_category.name == params[:category]}
+    end
+    render 'layout_dashboard', locals: {here: 'documents', documents: @documents}
   end
 
   def actions

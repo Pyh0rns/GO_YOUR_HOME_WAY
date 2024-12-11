@@ -90,7 +90,7 @@ doc =
     description: 'Le devis signé pour la plomberie',
     property: pottier,
     document_category: DocumentCategory.find_by(name: 'Devis'),
-    date: '01-09-2023',
+    date: '01-11-2024',
   )
 image_path = Rails.root.join('app', 'assets', 'images', 'devis.webp')
 doc.photo.attach(io: File.open(image_path), filename: 'devis.webp')
@@ -100,10 +100,20 @@ doc =
     description: "Le devis signé pour l'électricité",
     property: pottier,
     document_category: DocumentCategory.find_by(name: 'Devis'),
-    date: '03-09-2023',
+    date: '03-11-2024',
   )
 image_path = Rails.root.join('app', 'assets', 'images', 'devis.webp')
 doc.photo.attach(io: File.open(image_path), filename: 'devis.webp')
+doc =
+  Document.create!(
+    name: 'Facture isolant',
+    description: "Facture laine de verre",
+    property: pottier,
+    document_category: DocumentCategory.find_by(name: 'Facture'),
+    date: '12-11-2024',
+  )
+image_path = Rails.root.join('app', 'assets', 'images', 'facture_template.jpg')
+doc.photo.attach(io: File.open(image_path), filename: 'facture_template.jpg')
 p 'documents created'
 
 # -------------------------------------
