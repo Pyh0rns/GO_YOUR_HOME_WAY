@@ -1,0 +1,34 @@
+
+
+.container-show-companies {
+  display: flex;
+  gap: 5vh;
+  padding: 0 10vh;
+}
+
+.container-show-companies-infos {
+  width: 50%;
+
+}
+
+.container-show-companies-map {
+  width: 50%;
+  height: 600px;
+}
+
+@media (min-width: 100px) and (max-width: 575px) {
+  .container-show-companies {
+    display: block;
+    padding: 0 2vh;
+
+  }
+
+  .container-show-companies-infos {
+    width: 100%;
+  }
+  .container-show-companies-map {
+    width: 90%;
+    height: 300px;
+  }
+
+}
