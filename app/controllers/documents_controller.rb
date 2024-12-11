@@ -10,7 +10,7 @@ class DocumentsController < ApplicationController
     @property = Property.find(params[:property_id])
     @document.property = @property
     if @document.save
-      redirect_to dashboard_path(property: @document.property)
+      redirect_to dashboard_documents_path(property: @document.property)
     else
       render :new, status: :unprocessable_entity
     end

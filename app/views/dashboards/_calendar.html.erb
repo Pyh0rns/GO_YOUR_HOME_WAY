@@ -15,6 +15,11 @@
         <%= appointment.company.name %>
       </div>
     <% end %>
+    <% @actions.select { |action| action.date == date }.each do |action| %>
+      <div class="event">
+        <%= action.description %>
+      </div>
+    <% end %>
   <% end %>
 </div>
 
