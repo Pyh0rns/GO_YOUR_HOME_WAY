@@ -9,6 +9,7 @@ class Company < ApplicationRecord
 
   has_many :work_actions, as: :actionable
   has_many :favorites
+  has_many :appointments
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
