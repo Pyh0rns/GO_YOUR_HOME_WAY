@@ -3,7 +3,14 @@
   <h1> new appointment</h1>
 
   <%= simple_form_for([@property, @appointment]) do |f| %>
+
+  <% unless params[:company_id] %>
     <%= f.association :company, collection: @property.companies %>
+  <% end %>
+  <% if params[:company_id] %>
+    <%= f.hidden_field :company_id, value: params[:company_id] %>
+  <% end %>
+
     <%= f.input :description %>
     <%= f.input :date %>
     <%= f.submit class: "btn-dashboard" %>

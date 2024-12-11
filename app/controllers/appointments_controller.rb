@@ -5,9 +5,8 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @property = Property.find(params[:property_id])
     @appointment = Appointment.new(appointment_params)
-    @appointment.property = @property
+    @appointment.property = Property.find(params[:property_id])
     if @appointment.save
       redirect_to dashboard_calendar_path(property: @appointment.property)
     else

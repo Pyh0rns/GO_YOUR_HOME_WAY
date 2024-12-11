@@ -12,6 +12,10 @@
       <% else %>
         <%= link_to raw("<i class='fa-regular fa-star'></i>"), company_favorites_path(@company), data: {turbo_method: :post} %>
       <% end %>
+
+
+      <a href="#">prendre rdv</a>
+      <%= link_to "prendre rdv", new_property_appointment_path(current_user.properties.last, company_id: @company.id) %>
     </div>
 
 

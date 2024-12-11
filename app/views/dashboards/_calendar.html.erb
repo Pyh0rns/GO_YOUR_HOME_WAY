@@ -6,17 +6,17 @@
   <%= month_calendar(events: @items, attribute: :deadline) do |date| %>
     <%= date.day %>
     <% @items.select { |item| item.deadline.to_date == date }.each do |item| %>
-      <div class="event">
+      <div class="event bg-success bg-gradient">
         <%= item.title %>
       </div>
     <% end %>
     <% @appointments.select { |appointment| appointment.date == date }.each do |appointment| %>
-      <div class="event">
-        <%= appointment.company.name %>
+      <div class="event bg-warning bg-gradient">
+      <%= link_to appointment.company.name, company_path(appointment.company), class:"text-dark link_to" %>
       </div>
     <% end %>
     <% @actions.select { |action| action.date == date }.each do |action| %>
-      <div class="event">
+      <div class="event bg-primary bg-gradient">
         <%= action.description %>
       </div>
     <% end %>
