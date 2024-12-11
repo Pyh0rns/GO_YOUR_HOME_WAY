@@ -8,13 +8,22 @@ class FavoritesController < ApplicationController
       Favorite.create!(company: @company, property: property)
     end
 
-    redirect_to companies_path
+    if request.referer.include?(company_path(@company))
+      redirect_to company_path(@company)
+    else
+      redirect_to companies_path
+    end
   end
 
 
   def destroy
     @favorite = Favorite.find(params[:id])
     @favorite.destroy
-    redirect_to companies_path
+
+    if request.referer.include?(company_path(@favorite.company))
+      redirect_to company_path(@favorite.company)
+    else
+      redirect_to companies_path
+    end
   end
 end

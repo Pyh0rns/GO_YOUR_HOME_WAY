@@ -1,7 +1,8 @@
 <div class="container">
 
-  <h1>Companies#index</h1>
-  <p>Find me in app/views/companies/index.html.erb</p>
+  <h1>Toutes les entreprises</h1>
+  <p>mettre un btn pour switcher sur une map full screen? + info_window etc?</p>
+  <p>rajouter les filtres par catégories</p>
 
 
   <%= form_with url: companies_path, method: :get, class: "w-25 d-flex" do %>
@@ -14,9 +15,16 @@
   <% end %>
 
 
-  <ul class="mt-5">
     <% @companies.each do |company| %>
-      <li><%= link_to company.name, company_path(company) %></li>
+
+    <div class="card-company my-3">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <div class="card-company-infos">
+        <h2><%= company.name %></h2>
+      <%= link_to company.name, company_path(company) %>
+        <p><i class="fa-solid fa-location-dot"></i> <%= company.address %></p>
+        <p><%= company.email %></p>
+      </div>
 
       <% if company.favorites.exists?(Favorite.where(property: current_user.properties.last)) %>
         <% favorite = Favorite.where(property: current_user.properties.last).where(company: company).first %>
@@ -24,7 +32,6 @@
       <% else %>
         <%= link_to raw("<i class='fa-regular fa-star'></i>"), company_favorites_path(company), data: {turbo_method: :post} %>
       <% end %>
-
+    </div>
     <% end %>
-  </ul>
 </div>

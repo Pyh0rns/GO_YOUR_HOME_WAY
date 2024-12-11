@@ -1,20 +1,26 @@
-<div class="container">
-  <h1><%= @company.name %></h1>
+<div class="container mt-5">
+  <div class="container-show-companies">
+    <div class="container-show-companies-infos">
+      <h1><%= @company.name %></h1>
 
-  <p><%= @company.email %></p>
-  <p><%= @company.address %></p>
+      <p><%= @company.email %></p>
+      <p><i class="fa-solid fa-location-dot"></i> <%= @company.address %></p>
+
+      <% if @company.favorites.exists?(Favorite.where(property: current_user.properties.last)) %>
+        <% favorite = Favorite.where(property: current_user.properties.last).where(company: @company).first %>
+        <%= link_to raw("<i class='fa-solid fa-star'></i>"), favorite_path(favorite), data: {turbo_method: :delete} %>
+      <% else %>
+        <%= link_to raw("<i class='fa-regular fa-star'></i>"), company_favorites_path(@company), data: {turbo_method: :post} %>
+      <% end %>
+    </div>
 
 
-  <a href="#">Contacter cette entreprise</a>
-  <a href="#">Mettre en favoris?</a>
 
-  <p>Mettre une map</p>
+    <div class="container-show-companies-map"
+      data-controller="map"
+      data-map-marker-value="<%= @marker.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
-  <div style="width: 50%; height: 600px;"
-    data-controller="map"
-    data-map-marker-value="<%= @marker.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
-
-  <p>faire de cette modal une show?</p>
+  </div>
 </div>
+  <p>faire de cette show une modal?</p>
