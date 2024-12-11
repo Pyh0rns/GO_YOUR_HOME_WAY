@@ -12,8 +12,8 @@
 .btn-dashboard {
   // display: flex;
   // align-items: center;
-  border: solid 2px #188803;
-  color: #188803;
+  border: solid 2px $green;
+  color: $green;
   opacity: 0.8;
   padding: 8px 16px;
   text-decoration: none;
@@ -25,8 +25,8 @@
 }
 
 .btn-update-property {
-  color: #188803;
-  border: #188803;
+  color: $green;
+  border: $green;
   border-radius: 50%;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   padding: 1vh;
@@ -48,6 +48,24 @@
   display: inline;
 }
 
+.btn-comparer {
+  display: inline-block;
+  margin-top: 2vh;
+  text-decoration: none;
+  color: white;
+  background-color: $green;
+  opacity: 0.8;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: green 1px solid;
+  transition: ease 0.3s;
+  &:hover {
+    opacity: 1;
+    transition: ease 0.3s;
+  }
+}
+
+
 .dashboard-card {
   border-radius: 4px;
   border: #d2d5d4;
@@ -61,9 +79,9 @@
   .recap-infos-main {
     width: 50%;
 
-    .recap-infos {
-      margin: 5vh;
-    }
+  .recap-infos {
+    margin: 5vh;
+  }
   }
   .recap-map {
     margin: 3vh;
@@ -71,6 +89,11 @@
     height: 300px;
   }
 }
+
+.recap-infos > p > i {
+  color: $green;
+}
+
 
 @media (min-width: 100px) and (max-width: 575px) {
   .dashboard-recap {
