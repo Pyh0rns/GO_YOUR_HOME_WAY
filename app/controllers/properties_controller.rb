@@ -5,12 +5,15 @@ class PropertiesController < ApplicationController
     # render layout: "application_dashboard"
   end
 
-  def show
-    @property = Property.find(params[:id])
-  end
+  # def show
+  #   @property = Property.find(params[:id])
+  # end
 
   def new
     @property = Property.new
+    # unless request.referer.include?(new_user_registration_path)
+    #   render layout: "application_dashboard"
+    # end
   end
 
   def create

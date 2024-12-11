@@ -43,7 +43,10 @@ class DashboardsController < ApplicationController
   private
 
   def set_property
-    @property = Property.find(params[:property])
-    # @property = Property.find(cookies[:property_id]).to_i
+    if params[:property]
+      @property = Property.find(params[:property])
+    else
+      @property = Property.find(cookies[:property_id]).to_i
+    end
   end
 end
