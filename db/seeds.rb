@@ -223,6 +223,12 @@ action.photos.attach(
 p 'actions created'
 
 # -------------------------------------
+p 'create favorites'
+Favorite.create!(property: pottier, company: elec)
+Favorite.create!(property: pottier, company: plomberie)
+p 'favorites created'
+
+# -------------------------------------
 p 'create list items'
 ListItem.create!(property: pottier, title: 'ranger', deadline: Date.today)
 ListItem.create!(property: pottier, title: 'acheter un tournevis', deadline: Date.today + 1)
