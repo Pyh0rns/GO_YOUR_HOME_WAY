@@ -37,7 +37,7 @@
         <h2><%= action.name %></h2>
         <p><%= action.description %></p>
         <% if action.actionable.is_a?(Company) %>
-          <p>réalisé par: <%= link_to action.actionable.name, company_path(action.actionable) %>, le: <%= action.date %> </p>
+          <p>réalisé par: <%= link_to action.actionable.name, company_path(action.actionable, property: @property) %>, le: <%= action.date %> </p>
         <% else %>
           <p>réalisé par vous même, le: <%= action.date %> </p>
         <% end %>

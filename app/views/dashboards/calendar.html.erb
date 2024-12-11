@@ -12,7 +12,7 @@
     <% end %>
     <% @appointments.select { |appointment| appointment.date == date }.each do |appointment| %>
       <div class="event bg-warning bg-gradient">
-        <%= link_to appointment.company.name, company_path(appointment.company), class:"text-dark link_to" %>
+        <%= link_to appointment.company.name, company_path(appointment.company, property: @property), class:"text-dark link_to" %>
         <%= link_to raw("<i class='fa-solid fa-xmark'></i>"), appointment_path(appointment), data: {turbo_method: :delete, turbo_confirm: "Sur?"}, class:"text-dark link_to" %>
       </div>
     <% end %>

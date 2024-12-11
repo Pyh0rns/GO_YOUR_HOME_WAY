@@ -1,6 +1,8 @@
 class PropertiesController < ApplicationController
+
   def index
     @properties = current_user.properties
+    # render layout: "application_dashboard"
   end
 
   def show
@@ -22,7 +24,8 @@ class PropertiesController < ApplicationController
   end
 
   def edit
-    @property = Property.find(params[:id])
+    @property = Property.find(params[:id]) || Property.find(params[:Property_id])
+    render layout: "application_dashboard"
   end
 
   def update

@@ -31,7 +31,7 @@
     <div
       class="recap-map"
       data-controller="map"
-      data-map-marker-value="<%= cookies[:marker] %>"
+      data-map-marker-value="<%= @marker.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
     >
   </div>
@@ -48,7 +48,7 @@
       <% end %>
 
       <% @property.companies.each do |company| %>
-        <%= link_to company_path(company), class:"link_to" do  %>
+        <%= link_to company_path(company, property: @property), class:"link_to" do  %>
           <div class="card-company">
             <img
               src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"
@@ -68,7 +68,7 @@
   <div class="d-flex justify-content-end">
     <%=
       link_to 'Voir toutes les entreprises',
-              companies_path,
+              companies_path(property: @property),
               class: 'link_to btn-dashboard btn-contacts'
     %>
   </div>
@@ -83,9 +83,9 @@
       <% @property.list_items.select { |item| item.deadline.to_date >= Date.today }.sort_by(&:deadline).first(3).each do |item| %>
         <p><%= item.title %>, avant le <%= item.deadline %></p>
       <% end %>
-        <%= link_to "Calendrier", dashboard_calendar_path(property: @property), class: "btn-dashboard" %>
+        <%= link_to "Calendrier", calendar_path(property: @property), class: "btn-dashboard" %>
         <a class="btn-dashboard" href="#">Voir tout</a>
-        <%#= link_to "Voir tout", dashboard_lists_path, class: "btn-dashboard" %>
+        <%#= link_to "Voir tout", lists_path, class: "btn-dashboard" %>
     </div>
   </div>
   <div>

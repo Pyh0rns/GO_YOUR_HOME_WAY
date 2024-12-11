@@ -7,9 +7,9 @@
 
 
 <div class="w-50 d-flex justify-content-between">
-  <%= link_to "Tout", dashboard_documents_path(property: @property), class: "btn-dashboard" %>
+  <%= link_to "Tout", documents_path(property: @property), class: "btn-dashboard" %>
   <% DocumentCategory.all.each do |category| %>
-    <%= link_to category.name, dashboard_documents_path(property: @property, category: category.name),class: "btn-dashboard" %>
+    <%= link_to category.name, documents_path(property: @property, category: category.name),class: "btn-dashboard" %>
   <% end %>
 </div>
   <p>pareil pour les thématiques?</p>
