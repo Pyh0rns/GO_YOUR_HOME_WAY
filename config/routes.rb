@@ -17,8 +17,9 @@ Rails.application.routes.draw do
     resources :documents
     resources :work_actions
     resources :list_items
-    resources :appointments
+    resources :appointments, except: :destroy
   end
+  resources :appointments, only: :destroy
 
 
   resources :companies, only: [:index, :show] do
