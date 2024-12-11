@@ -17,7 +17,7 @@ class WorkActionsController < ApplicationController
     end
 
     if @work_action.save
-      redirect_to dashboard_path
+      redirect_to dashboard_actions_path(property: @work_action.property)
     else
       render :new, status: :unprocessable_entity
     end

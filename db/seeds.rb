@@ -4,6 +4,12 @@
 #
 require 'json'
 
+
+p 'destroy appointments'
+Appointment.destroy_all
+p 'appointments destroyed'
+
+# -------------------------------------
 p 'destroy list items'
 ListItem.destroy_all
 p 'list items destroyed'
@@ -102,7 +108,7 @@ p 'documents created'
 
 # -------------------------------------
 p 'create companies'
-Company.create!(
+elec = Company.create!(
   email: 'electron@mail.com',
   password: 'coucou',
   name: 'Electron libre',
@@ -110,7 +116,7 @@ Company.create!(
   phone_number: '01 47 20 00 01',
   rating: 5,
 )
-Company.create!(
+plomberie = Company.create!(
   email: 'plomberie@mail.com',
   password: 'coucou',
   name: 'Plombier du Nord',
@@ -174,7 +180,7 @@ action =
   WorkAction.create!(
     name: 'Tableau électrique',
     description: 'Tableau électrique terminé',
-    date: Date.today,
+    date: Date.today - 5,
     action_category: ActionCategory.find_by(name: 'Electricité'),
     property: pottier,
     actionable: Company.first,
@@ -193,7 +199,7 @@ action =
   WorkAction.create!(
     name: 'Enduit',
     description: 'Enduit mur droit extension terminé',
-    date: Date.today,
+    date: Date.today - 2,
     action_category: ActionCategory.find_by(name: 'Autre'),
     property: pottier,
     actionable: User.first,
@@ -213,5 +219,10 @@ ListItem.create!(property: pottier, title: 'acheter un tournevis', deadline: Dat
 ListItem.create!(property: pottier, title: 'peinture 2e étage', deadline: Date.today + 4)
 p 'list items created'
 
+# -------------------------------------
+p 'create appointments'
+Appointment.create!(property: pottier, company: elec, description: 'prise de contact', date: Date.today + 3)
+Appointment.create!(property: pottier, company: plomberie, description: 'RDV pour un devis', date: Date.today + 7)
+p 'appointments created'
 # -------------------------------------
 p 'ALL GOOD'

@@ -39,9 +39,14 @@
         <p><%= doc.description %></p>
         <p><%= doc.date %></p>
         <p><%= doc.document_category.name %></p>
-        <%= link_to rails_blob_url(doc.photo, disposition: "attachment"), target: "_blank" do %>
-          <i class="fa-solid fa-download"></i>
+
+        <% if doc.photo.attached? %>
+          <%= link_to rails_blob_url(doc.photo, disposition: "attachment"), target: "_blank" do %>
+            <i class="fa-solid fa-download"></i>
+          <% end %>
         <% end %>
+
+
 
       </div>
     </div>
