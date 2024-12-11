@@ -74,11 +74,10 @@
   </div>
 </div>
 
-
 <%# =============== PROCHAINES ACTIONS =============== %>
 
-<div class="dashboard-card d-flex" style="height:400px">
-  <div class="w-50">
+<div class="dashboard-card next-actions">
+  <div>
     <h2>Mes prochaines actions</h2>
     <div class="m-5">
       <% @property.list_items.select { |item| item.deadline.to_date >= Date.today }.sort_by(&:deadline).first(3).each do |item| %>
@@ -89,7 +88,7 @@
         <%#= link_to "Voir tout", dashboard_lists_path, class: "btn-dashboard" %>
     </div>
   </div>
-  <div class="w-50">
+  <div>
     <h2>Mes prochains RDV</h2>
     <div class="m-5">
       <% @property.appointments.select { |appt| appt.date >= Date.today }.sort_by(&:date).first(3).each do |appt| %>
@@ -115,6 +114,3 @@
     <p>Total: 250000</p>
   </div>
 </div>
-
-
-<h2>ETC</h2>

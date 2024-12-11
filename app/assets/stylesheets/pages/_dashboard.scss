@@ -95,6 +95,15 @@
 }
 
 
+.next-actions {
+  display: flex;
+}
+
+.next-actions > div {
+  width: 50%;
+}
+
+
 @media (min-width: 100px) and (max-width: 575px) {
   .dashboard-recap {
     display: block;
@@ -108,7 +117,11 @@
     }
   }
 
-  // .btn-dashboard {
-  //  font-size: small;
-  // }
+  .next-actions {
+    display: block;
+  }
+
+  .next-actions > div {
+    width: 100%;
+  }
 }
