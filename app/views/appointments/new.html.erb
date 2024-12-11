@@ -1,0 +1,12 @@
+<div class="container w-50">
+
+  <h1> new appointment</h1>
+
+  <%= simple_form_for([@property, @appointment]) do |f| %>
+    <%= f.association :company, collection: @property.companies %>
+    <%= f.input :description %>
+    <%= f.input :date %>
+    <%= f.submit class: "btn-dashboard" %>
+
+  <% end %>
+</div>

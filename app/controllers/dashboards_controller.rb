@@ -26,6 +26,7 @@ class DashboardsController < ApplicationController
     # start_date = params.fetch(:start_date, Date.today).to_date
     # @items = ListItem.where(deadline: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
     @items = @property.list_items
+    @appointments = @property.appointments
     render 'layout_dashboard', locals: {here: 'calendar'}
   end
 

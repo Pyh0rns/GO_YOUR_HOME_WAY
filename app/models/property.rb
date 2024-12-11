@@ -4,6 +4,7 @@ class Property < ApplicationRecord
   has_many :work_actions
   has_many :favorites
   has_many :list_items
+  has_many :appointments
   has_many :companies, through: :favorites
 
   geocoded_by :address
