@@ -14,7 +14,7 @@ class AppointmentsController < ApplicationController
     end
 
     if @appointment.save
-      redirect_to dashboard_calendar_path(property: @appointment.property)
+      redirect_to calendar_path(property: @appointment.property)
     else
       render :new, status: :unprocessable_entity
     end
@@ -23,7 +23,7 @@ class AppointmentsController < ApplicationController
   def destroy
     @appointment = Appointment.find(params[:id])
     @appointment.destroy
-    redirect_to dashboard_calendar_path(property: @appointment.property)
+    redirect_to calendar_path(property: @appointment.property)
   end
 
   def appointment_params

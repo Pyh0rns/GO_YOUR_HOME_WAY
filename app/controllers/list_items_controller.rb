@@ -10,7 +10,7 @@ class ListItemsController < ApplicationController
     @item = ListItem.new(item_params)
     @item.property = @property
     if @item.save
-      redirect_to dashboard_calendar_path(property: @item.property)
+      redirect_to calendar_path(property: @item.property)
     else
       render :new, status: :unprocessable_entity
     end

@@ -2,7 +2,7 @@ class Property < ApplicationRecord
   belongs_to :user
   has_many :documents
   has_many :work_actions
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :list_items
   has_many :appointments
   has_many :companies, through: :favorites

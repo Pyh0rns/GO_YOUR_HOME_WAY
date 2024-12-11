@@ -29,12 +29,12 @@ Rails.application.routes.draw do
   resources :favorites, only: [:destroy]
 
   get 'dashboard', to: "dashboards#dashboard"
-  get 'dashboard/documents', to: "dashboards#documents"
-  get 'dashboard/actions', to: "dashboards#actions"
-  get 'dashboard/contacts', to: "dashboards#contacts"
-  get 'dashboard/calendar', to: "dashboards#calendar"
-  get 'dashboard/lists', to: "dashboards#lists"
-  get 'dashboard/settings', to: "dashboards#settings"
+  get 'documents', to: "dashboards#documents"
+  get 'actions', to: "dashboards#actions"
+  get 'contacts', to: "dashboards#contacts"
+  get 'calendar', to: "dashboards#calendar"
+  get 'lists', to: "dashboards#lists"
+  get 'settings', to: "dashboards#settings"
 
 
   get 'dashboard_pro', to: "dashboards#dashboard_pro"
