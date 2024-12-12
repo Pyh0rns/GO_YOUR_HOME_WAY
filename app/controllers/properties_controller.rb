@@ -11,7 +11,7 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
-    if cookies[:property_id] != ""
+    if session[:property_id] != ""
       render layout: "application_dashboard"
     end
   end

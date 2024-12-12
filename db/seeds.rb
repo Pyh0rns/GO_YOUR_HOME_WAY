@@ -4,7 +4,6 @@
 #
 require 'json'
 
-
 p 'destroy property categories'
 PropertyCategory.destroy_all
 p 'property categories destroyed'

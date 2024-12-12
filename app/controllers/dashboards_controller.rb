@@ -5,10 +5,10 @@ class DashboardsController < ApplicationController
 
   def dashboard
     @property = current_user.properties.last
-    @property = Property.find(cookies[:property_id].to_i) if cookies[:property_id] != ""
+    @property = Property.find(session[:property_id].to_i) if session[:property_id] != ""
     @property = Property.find(params[:property]) if params[:property]
     @marker = { lat: @property.latitude, lng: @property.longitude }
-    cookies[:property_id] = @property.id
+    session[:property_id] = @property.id
   end
 
   def documents
@@ -47,7 +47,7 @@ class DashboardsController < ApplicationController
     if params[:property]
       @property = Property.find(params[:property])
     else
-      @property = Property.find(cookies[:property_id]).to_i
+      @property = Property.find(session[:property_id]).to_i
     end
   end
 end

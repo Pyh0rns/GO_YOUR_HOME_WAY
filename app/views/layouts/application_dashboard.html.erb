@@ -34,8 +34,8 @@
                 <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">Settings</a>
                 <ul class="dropdown-menu-side">
                   <li><%= link_to "Ajouter une propriété", new_property_path %></li>
-                  <li><%= link_to "Modifier la propriété", edit_property_path(Property.find(cookies[:property_id].to_i)) %></li>
-                  <li><%= link_to "Supprimer la propriété", property_path(Property.find(cookies[:property_id].to_i)), data: {turbo_method: :delete, turbo_confirm: "Sur?"} %> </li>
+                  <li><%= link_to "Modifier la propriété", edit_property_path(Property.find(session[:property_id].to_i)) %></li>
+                  <li><%= link_to "Supprimer la propriété", property_path(Property.find(session[:property_id].to_i)), data: {turbo_method: :delete, turbo_confirm: "Sur?"} %> </li>
                   <li><a href="#">Récupérer le pdf complet de l'historique de votre propriété</a></li>
                 </ul>
               </li>
