@@ -4,6 +4,8 @@
 #
 require 'json'
 
+# pour vider les infos dans session[:property_id]
+
 p 'destroy appointments'
 Appointment.destroy_all
 p 'appointments destroyed'
