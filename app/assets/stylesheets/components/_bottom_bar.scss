@@ -11,6 +11,9 @@
   padding-top: 0.25rem;
   text-decoration: none;
   color: black;
+  > .up {
+    z-index: 1200;
+  }
 }
 
 .dropdown-menu {
