@@ -64,59 +64,8 @@
       <% end %>
 
       <% @property.companies.each do |company| %>
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal-<%= company.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="container mt-5">
-          <div class="container-show-companies">
-            <div class="container-show-companies-infos">
-              <h1><%= company.name %></h1>
-              <p><%= company.email %></p>
-              <p><i class="fa-solid fa-location-dot"></i> <%= company.address %></p>
-
-              <% if company.favorites.exists?(Favorite.where(property: current_user.properties.last)) %>
-                <% favorite = Favorite.where(property: current_user.properties.last).where(company: company).first %>
-                <%= link_to raw("<i class='fa-solid fa-star'></i>"), favorite_path(favorite), data: {turbo_method: :delete} %>
-              <% else %>
-                <%= link_to raw("<i class='fa-regular fa-star'></i>"), company_favorites_path(company), data: {turbo_method: :post} %>
-              <% end %>
-
-              <%= link_to "prendre rdv", new_property_appointment_path(current_user.properties.last, company_id: company.id) %>
-            </div>
-
-            <div class="container-show-companies-map"
-              data-controller="map"
-              data-map-marker-value="<%= {lat: company.latitude, lng: company.longitude}.to_json %>"
-              data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<%# fin modal %>
-
-          <div class="card-company" data-bs-toggle="modal" data-bs-target="#exampleModal-<%= company.id %>" >
-            <img
-              src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"
-            />
-            <div class="card-company-infos">
-              <h2><%= company.name %></h2>
-              <p>
-                <i class="fa-solid fa-location-dot"></i> <%= company.address %>
-              </p>
-              <p><%= company.email %></p>
-            </div>
-          </div>
-        <% end %>
+        <%= render 'companies/card_company', company: company %>
+      <% end %>
     </div>
   </div>
   <div class="d-flex justify-content-end">
