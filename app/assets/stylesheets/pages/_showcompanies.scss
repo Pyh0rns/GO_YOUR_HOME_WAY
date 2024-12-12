@@ -1,19 +1,19 @@
 
 
 .container-show-companies {
-  display: flex;
+  // display: flex;
   gap: 5vh;
   padding: 0 10vh;
 }
 
 .container-show-companies-infos {
-  width: 50%;
+  // width: 50%;
 
 }
 
 .container-show-companies-map {
-  width: 50%;
-  height: 600px;
+  // width: 50%;
+  height: 300px;
 }
 
 @media (min-width: 100px) and (max-width: 575px) {
@@ -28,7 +28,6 @@
   }
   .container-show-companies-map {
     width: 90%;
-    height: 300px;
   }
 
 }
