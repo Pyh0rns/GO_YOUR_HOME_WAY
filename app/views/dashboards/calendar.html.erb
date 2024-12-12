@@ -8,6 +8,7 @@
     <% @items.select { |item| item.deadline.to_date == date }.each do |item| %>
       <div class="event bg-success bg-gradient">
         <%= item.title %>
+        <%= link_to raw("<i class='fa-solid fa-xmark'></i>"), list_item_path(item), data: {turbo_method: :delete, turbo_confirm: "Sur?"}, class:"text-dark link_to" %>
       </div>
     <% end %>
     <% @appointments.select { |appointment| appointment.date == date }.each do |appointment| %>
