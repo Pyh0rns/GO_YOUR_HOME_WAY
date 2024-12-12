@@ -47,7 +47,7 @@
   position: relative;
 }
 /* Hide dropdown menu by default */
-.dropdown-menu {
+.dropdown-menu-side {
   display: none;
   position: absolute;
   left: 0;
@@ -57,25 +57,25 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
-  z-index: 1000;
+  z-index: 500;
   width: 200px;
 }
 
 /* Dropdown menu items */
-.dropdown-menu li {
+.dropdown-menu-side li {
   padding: 10px;
   background-color: $green;
   margin: 0;
 }
 
-.dropdown-menu li a {
+.dropdown-menu-side li a {
   text-decoration: none;
   color: #333;
   display: block;
 }
 
 /* Show the dropdown when active */
-.dropdown.open .dropdown-menu {
+.dropdown.open .dropdown-menu-side {
   display: block;
 }
 

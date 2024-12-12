@@ -32,7 +32,7 @@
 
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">Settings</a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu-side">
                   <li><%= link_to "Ajouter une propriété", new_property_path %></li>
                   <li><%= link_to "Modifier la propriété", edit_property_path(@property) %></li>
                   <li><%= link_to "Supprimer la propriété", property_path(@property), data: {turbo_method: :delete, turbo_confirm: "Sur?"} %> </li>
@@ -50,9 +50,8 @@
       </div>
       <%= render "shared/footer" %>
     </div>
+
     <%# A CHANGER !!! %>
-
-
   <script>
   function toggleDropdown(event) {
     event.preventDefault(); // Prevent default link behavior

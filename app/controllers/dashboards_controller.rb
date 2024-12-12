@@ -5,6 +5,7 @@ class DashboardsController < ApplicationController
 
   def dashboard
     @property = current_user.properties.last
+    @property = Property.find(cookies[:property_id].to_i) if cookies[:property_id]
     @property = Property.find(params[:property]) if params[:property]
     @marker = { lat: @property.latitude, lng: @property.longitude }
     cookies[:property_id] = @property.id

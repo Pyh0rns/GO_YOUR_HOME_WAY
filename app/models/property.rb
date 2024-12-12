@@ -1,5 +1,6 @@
 class Property < ApplicationRecord
   belongs_to :user
+  belongs_to :property_category
   has_many :documents
   has_many :work_actions
   has_many :favorites, dependent: :destroy

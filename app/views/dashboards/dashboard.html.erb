@@ -1,12 +1,25 @@
 <div class="dashboard-header">
   <div class="header-infos">
     <h1><%= @property.name %></h1>
+    <p><%= @property.property_category.name %></p>
+
   </div>
-  <% if current_user.has_many_properties? %>
-    <%=
-      link_to 'Changer de propriété', properties_path, class: 'btn-dashboard'
-    %>
+  <% if @property.user.has_many_properties? %>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Changer de propriété
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <% current_user.properties.each do |property| %>
+          <%= link_to property.name, dashboard_path(property: property), class: "dropdown-item" %>
+        <% end %>
+      </div>
+    </div>
   <% end %>
+
+
+
+
 </div>
 
 <%# =============== RECAPITULATIF =============== %>
