@@ -1,7 +1,7 @@
 <div class="dashboard-header">
   <div class="header-infos">
     <h1><%= @property.name %></h1>
-    <%# <p><%= @property.property_category.name %></p> %>
+    <p><%= @property.property_category.name %></p>
 
   </div>
   <% if @property.user.has_many_properties? %>
