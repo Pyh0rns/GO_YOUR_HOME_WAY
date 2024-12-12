@@ -5,7 +5,9 @@ class DashboardsController < ApplicationController
 
   def dashboard
     @property = current_user.properties.last
-    @property = Property.find(session[:property_id].to_i) if session[:property_id] != ""
+    unless session[:property_id].nil? || session[:property_id] == ""
+      @property = Property.find(session[:property_id].to_i)
+    end
     @property = Property.find(params[:property]) if params[:property]
     @marker = { lat: @property.latitude, lng: @property.longitude }
     session[:property_id] = @property.id
