@@ -11,7 +11,7 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
-    if session[:property_id] != ""
+    unless session[:property_id] != "" || session[:property_id].nil?
       render layout: "application_dashboard"
     end
   end
