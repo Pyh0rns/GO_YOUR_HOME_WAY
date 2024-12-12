@@ -14,16 +14,20 @@
   </head>
 
   <body>
-    <%= render 'shared/flashes' %>
-
-    <div class="min-height-footer">
-      <div class="fix-footer">
-        <%= render 'shared/navbar' %>
-
-        <div class="dashboard-container">
-          <div class="sidebar">
-            <ul class="nav-list">
-              <li
+  <%= render 'shared/flashes' %>
+  
+  <div class="min-height-footer">
+    <div class="fix-footer" data-controller="navigation">
+      <%# Navbar pour PC (avec target) %>
+      <%= render 'shared/navbar', data: { navigation_target: 'navbar' } %>
+      
+      <%# Bottom nav pour mobile (avec target) %>
+      <%= render 'shared/bottom_nav', data: { navigation_target: 'bottomNav' } %>
+      
+      <div class="dashboard-container">
+        <div class="sidebar" data-navigation-target="sidebar">
+          <ul class="nav-list">
+             <li
                 class="<%= params[:action] == 'dashboard' ? 'tab-active' : '' %>"
               >
                 <%= link_to 'Home', dashboard_path %>
@@ -97,19 +101,19 @@
                       propriété</a
                     >
                   </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-
-          <div class="main-content">
-            <%= yield %>
-          </div>
+          </ul>
+        </div>
+        
+        <div class="main-content">
+          <%= yield %>
         </div>
       </div>
-      <%# <%= render "shared/footer" %>
-      <%= render 'shared/bottom_nav' %>
     </div>
+    
+    <%# Supprimez cette ligne car elle est en doublon %>
+    <%# <%= render 'shared/bottom_nav' %> 
+  </div>
+</body>
     <%# A CHANGER !!! %>
 
     <script>

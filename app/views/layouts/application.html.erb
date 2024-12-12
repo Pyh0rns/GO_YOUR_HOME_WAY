@@ -17,11 +17,17 @@
     <%= render 'shared/flashes' %>
 
     <div class="min-height-footer">
+      <div data-controller="navigation">
+        <%= render 'shared/navbar', data: { navigation_target: 'navbar' } %>
+        <%=
+          render 'shared/bottom_nav', data: { navigation_target: 'bottomNav' }
+        %>
+      </div>
       <div class="fix-footer">
-        <%= render 'shared/navbar' %>
+        <%# <%= render 'shared/navbar' %>
         <%= yield %>
       </div>
-      <%= render 'shared/footer' %>
+      <%# <%= render 'shared/footer' %>
       <%# render 'shared/bottom_nav %>
     </div>
   </body>
