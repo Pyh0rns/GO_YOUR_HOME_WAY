@@ -16,23 +16,16 @@
 
 
     <% @companies.each do |company| %>
-
-    <div class="card-company my-3">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-      <div class="card-company-infos">
-        <h2><%= company.name %></h2>
-      <%= link_to company.name, company_path(company) %>
-      <%#= link_to company.name, company_path(company) %>
-        <p><i class="fa-solid fa-location-dot"></i> <%= company.address %></p>
-        <p><%= company.email %></p>
+      <div class="my-3 w-50" style="position:relative;">
+      <%= render 'companies/card_company', company: company %>
+      <div class="fav-index">
+        <% if company.favorites.exists?(Favorite.where(property: current_user.properties.last)) %>
+          <% favorite = Favorite.where(property: current_user.properties.last).where(company: company).first %>
+          <%= link_to raw("<i class='fa-solid fa-star'></i>"), favorite_path(favorite), data: {turbo_method: :delete} %>
+        <% else %>
+          <%= link_to raw("<i class='fa-regular fa-star'></i>"), company_favorites_path(company), data: {turbo_method: :post} %>
+        <% end %>
       </div>
-
-      <% if company.favorites.exists?(Favorite.where(property: current_user.properties.last)) %>
-        <% favorite = Favorite.where(property: current_user.properties.last).where(company: company).first %>
-        <%= link_to raw("<i class='fa-solid fa-star'></i>"), favorite_path(favorite), data: {turbo_method: :delete} %>
-      <% else %>
-        <%= link_to raw("<i class='fa-regular fa-star'></i>"), company_favorites_path(company), data: {turbo_method: :post} %>
-      <% end %>
     </div>
     <% end %>
 </div>

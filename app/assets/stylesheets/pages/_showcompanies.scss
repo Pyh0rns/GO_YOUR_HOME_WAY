@@ -1,4 +1,30 @@
 
+.fav-index {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  right: 5%;
+}
+
+.fav-index i {
+  color: $green;
+  background-color: whitesmoke;
+  border: $green;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  padding: 2vh;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: ease 0.3s;
+  &:hover {
+    opacity: 1;
+    transition: ease 0.3s;
+  }}
 
 .container-show-companies {
   // display: flex;
