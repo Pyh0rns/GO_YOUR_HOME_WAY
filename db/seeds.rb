@@ -4,9 +4,6 @@
 #
 require 'json'
 
-
-
-
 p 'destroy appointments'
 Appointment.destroy_all
 p 'appointments destroyed'
