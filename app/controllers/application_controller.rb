@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
       session[:property_id] = nil
       new_property_path
     elsif current_user
+      session[:property_id] = nil
       dashboard_path
     end
   end
