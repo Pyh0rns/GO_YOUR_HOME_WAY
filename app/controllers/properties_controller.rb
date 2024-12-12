@@ -11,9 +11,9 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
-    # unless request.referer.include?(new_user_registration_path)
-    #   render layout: "application_dashboard"
-    # end
+    if cookies[:property_id] != ""
+      render layout: "application_dashboard"
+    end
   end
 
   def create
@@ -22,7 +22,7 @@ class PropertiesController < ApplicationController
     if @property.save
       redirect_to dashboard_path, notice: 'Propriété créée avec succès'
     else
-      render :new, status: :unprocessable_entity
+      render :new, layout: "application_dashboard", status: :unprocessable_entity
     end
   end
 
@@ -36,7 +36,7 @@ class PropertiesController < ApplicationController
     if @property.update(property_params)
       redirect_to dashboard_path, notice: 'Propriété modifiée avec succès'
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, layout: "application_dashboard", status: :unprocessable_entity
     end
   end
 

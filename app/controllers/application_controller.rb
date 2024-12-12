@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
     if current_company
       dashboard_pro_path
     elsif current_user.properties.empty?
+      cookies[:property_id] = nil
       new_property_path
     elsif current_user
       dashboard_path
