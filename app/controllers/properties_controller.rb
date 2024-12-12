@@ -18,6 +18,7 @@ class PropertiesController < ApplicationController
   def create
     @property = Property.new(property_params)
     @property.user = current_user
+    raise
     if @property.save
       redirect_to dashboard_path, notice: 'Propriété créée avec succès'
     else
@@ -63,7 +64,7 @@ class PropertiesController < ApplicationController
         :fee_price,
         :surface,
         :number_of_rooms,
-        :property_category_id,
+        :property_category_id
       )
   end
 end
