@@ -1,3 +1,4 @@
+<%= render "shared/fab" %>
 <nav
   id="bottom-bar"
   class="fixed-bottom bg-white border-top"
@@ -15,8 +16,8 @@
           </svg>
                   </svg>
         %>
-        <%= image_tag 'house.png', width: 20, height: 20 %>
-        <span class="small">Ma maison</span>
+        <%= image_tag 'hangar.png', width: 20, height: 20 %>
+        <span class="small">Chantier</span>
       </div>
 
       <div
@@ -75,6 +76,11 @@
       </div>
     </li>
 
+<!--
+    <li class="position-relative">
+      <%= render "shared/fab" %>
+    </li>
+-->
     <li class="position-relative" data-controller="dropdown">
       <div
         class="text-decoration-none text-black d-flex flex-column align-items-center"
