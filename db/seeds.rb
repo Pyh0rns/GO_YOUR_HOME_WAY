@@ -5,11 +5,7 @@
 require 'json'
 
 
-p 'destroy property categories'
-PropertyCategory.destroy_all
-p 'property categories destroyed'
 
-# -------------------------------------
 
 p 'destroy appointments'
 Appointment.destroy_all
@@ -40,9 +36,15 @@ p 'destroy documents'
 Document.destroy_all
 p 'documents destroyed'
 
+# -------------------------------------
 p 'destroy properties'
 Property.destroy_all
 p 'properties destroyed'
+
+# -------------------------------------
+p 'destroy property categories'
+PropertyCategory.destroy_all
+p 'property categories destroyed'
 
 # -------------------------------------
 p 'destroy users'
