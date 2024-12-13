@@ -1,16 +1,16 @@
 class AppointmentsController < ApplicationController
   def new
-    @property = Property.find(params[:property_id])
+    @property = Property.find(session[:property_id].to_i)
     @appointment = Appointment.new
   end
 
   def create
     @appointment = Appointment.new(appointment_params)
-    @appointment.property = Property.find(params[:property_id])
+    @appointment.property = Property.find(session[:property_id].to_i)
 
     # si la company n'est pas déjà dans mes favs, je l'ajoute
     unless @appointment.property.favorites.exists?(company: @appointment.company)
-      Favorite.create!(property: Property.find(params[:property_id]), company: @appointment.company )
+      Favorite.create!(property: Property.find(session[:property_id].to_i), company: @appointment.company )
     end
 
     if @appointment.save

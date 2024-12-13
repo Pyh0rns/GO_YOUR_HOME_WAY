@@ -4,6 +4,7 @@
 #
 require 'json'
 
+# pour vider les infos dans session[:property_id]
 
 p 'destroy appointments'
 Appointment.destroy_all
@@ -34,9 +35,15 @@ p 'destroy documents'
 Document.destroy_all
 p 'documents destroyed'
 
+# -------------------------------------
 p 'destroy properties'
 Property.destroy_all
 p 'properties destroyed'
+
+# -------------------------------------
+p 'destroy property categories'
+PropertyCategory.destroy_all
+p 'property categories destroyed'
 
 # -------------------------------------
 p 'destroy users'
@@ -50,6 +57,15 @@ karine = User.create!(email: 'karine@mail.com', password: 'coucou')
 p 'users created'
 
 # -------------------------------------
+p 'create property_categories'
+principale = PropertyCategory.create!(name: "Résidence principale")
+PropertyCategory.create!(name: "Résidence secondaire")
+loc = PropertyCategory.create!(name: "En location")
+PropertyCategory.create!(name: "Vide")
+p 'property_categories created'
+
+
+# -------------------------------------
 p 'create properties'
 Property.create!(
   name: 'Appart Magasin',
@@ -57,6 +73,7 @@ Property.create!(
   buying_date: '01-03-2020',
   buying_price: 200_000,
   user: py,
+  property_category: loc
 )
 pottier =
   Property.create!(
@@ -65,13 +82,16 @@ pottier =
     buying_date: '01-06-2023',
     buying_price: 200_000,
     user: py,
+    property_category: principale
   )
+
 Property.create!(
   name: 'Maison St Remy',
   address: 'Rambouillet',
   buying_date: '01-06-2023',
   buying_price: 400_000,
   user: karine,
+  property_category: principale
 )
 p 'properties created'
 

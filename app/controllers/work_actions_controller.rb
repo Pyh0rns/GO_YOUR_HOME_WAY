@@ -2,6 +2,8 @@ class WorkActionsController < ApplicationController
   def new
     @property = Property.find(params[:property_id])
     @work_action = WorkAction.new
+    render layout: "application_dashboard"
+
   end
 
   def create

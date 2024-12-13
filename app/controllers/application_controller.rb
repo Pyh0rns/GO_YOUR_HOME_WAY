@@ -6,8 +6,10 @@ class ApplicationController < ActionController::Base
     if current_company
       dashboard_pro_path
     elsif current_user.properties.empty?
-      new_property_path
+      session[:property_id] = nil
+      root_path
     elsif current_user
+      session[:property_id] = nil
       dashboard_path
     end
   end

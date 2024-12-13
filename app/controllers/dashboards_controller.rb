@@ -4,10 +4,17 @@ class DashboardsController < ApplicationController
   before_action :set_property, except: [:dashboard, :dashboard_pro]
 
   def dashboard
-    @property = current_user.properties.last
-    @property = Property.find(params[:property]) if params[:property]
-    @marker = { lat: @property.latitude, lng: @property.longitude }
-    cookies[:property_id] = @property.id
+    if !session[:property_id].nil? && session[:property_id] != "" && Property.exists?(session[:property_id].to_i).nil?
+      @property = Property.find(session[:property_id].to_i)
+    elsif params[:property]
+      @property = Property.find(params[:property])
+    elsif current_user.properties.empty?
+      redirect_to root_path
+    else
+      @property = current_user.properties.last
+    end
+    @marker = { lat: @property.latitude, lng: @property.longitude } if @property
+    session[:property_id] = @property.id if @property
   end
 
   def documents
@@ -46,7 +53,7 @@ class DashboardsController < ApplicationController
     if params[:property]
       @property = Property.find(params[:property])
     else
-      @property = Property.find(cookies[:property_id]).to_i
+      @property = Property.find(session[:property_id]).to_i
     end
   end
 end

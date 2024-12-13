@@ -16,6 +16,12 @@ class ListItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @item = ListItem.find(params[:id])
+    @item.destroy
+    redirect_to calendar_path(property: @item.property)
+  end
+
   def item_params
     params.require(:list_item).permit(:title, :deadline)
   end

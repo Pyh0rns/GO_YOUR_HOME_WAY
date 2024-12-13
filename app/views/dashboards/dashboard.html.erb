@@ -1,12 +1,25 @@
 <div class="dashboard-header">
   <div class="header-infos">
     <h1><%= @property.name %></h1>
+    <p><%= @property.property_category.name %></p>
+
   </div>
-  <% if current_user.has_many_properties? %>
-    <%=
-      link_to 'Changer de propriété', properties_path, class: 'btn-dashboard'
-    %>
+  <% if @property.user.has_many_properties? %>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Changer de propriété
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <% current_user.properties.each do |property| %>
+          <%= link_to property.name, dashboard_path(property: property), class: "dropdown-item" %>
+        <% end %>
+      </div>
+    </div>
   <% end %>
+
+
+
+
 </div>
 
 <%# =============== RECAPITULATIF =============== %>
@@ -39,6 +52,9 @@
 
 <%# =============== ENTREPRISES FAV =============== %>
 
+
+
+
 <div class="dashboard-card">
   <h2>Mes entreprises favories</h2>
   <div class="m-5">
@@ -48,20 +64,7 @@
       <% end %>
 
       <% @property.companies.each do |company| %>
-        <%= link_to company_path(company, property: @property), class:"link_to" do  %>
-          <div class="card-company">
-            <img
-              src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"
-            />
-            <div class="card-company-infos">
-              <h2><%= company.name %></h2>
-              <p>
-                <i class="fa-solid fa-location-dot"></i> <%= company.address %>
-              </p>
-              <p><%= company.email %></p>
-            </div>
-          </div>
-        <% end %>
+        <%= render 'companies/card_company', company: company %>
       <% end %>
     </div>
   </div>

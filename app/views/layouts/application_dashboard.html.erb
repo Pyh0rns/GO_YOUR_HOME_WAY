@@ -106,22 +106,18 @@
         
         <div class="main-content">
           <%= yield %>
+
         </div>
       </div>
     </div>
-    
-    <%# Supprimez cette ligne car elle est en doublon %>
-    <%# <%= render 'shared/bottom_nav' %> 
-  </div>
-</body>
-    <%# A CHANGER !!! %>
 
-    <script>
-      function toggleDropdown(event) {
-        event.preventDefault(); // Prevent default link behavior
-        const parent = event.target.closest(".dropdown");
-        parent.classList.toggle("open"); // Add or remove the "open" class
-      }
-    </script>
+
+    <%# A CHANGER !!! %>
+  <script>
+  function toggleDropdown(event) {
+    event.preventDefault(); // Prevent default link behavior
+    const parent = event.target.closest('.dropdown');
+    parent.classList.toggle('open'); // Add or remove the "open" class
+  }</script>
   </body>
 </html>

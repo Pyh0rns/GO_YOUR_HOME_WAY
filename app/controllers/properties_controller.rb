@@ -1,5 +1,4 @@
 class PropertiesController < ApplicationController
-
   def index
     @properties = current_user.properties
     # render layout: "application_dashboard"
@@ -11,9 +10,9 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
-    # unless request.referer.include?(new_user_registration_path)
-    #   render layout: "application_dashboard"
-    # end
+    unless session[:property_id] != '' || session[:property_id].nil?
+      render layout: 'application_dashboard'
+    end
   end
 
   def create
@@ -22,13 +21,16 @@ class PropertiesController < ApplicationController
     if @property.save
       redirect_to dashboard_path, notice: 'Propriété créée avec succès'
     else
-      render :new, status: :unprocessable_entity
+      render :new,
+             layout: 'application_dashboard',
+             status: :unprocessable_entity
     end
   end
 
   def edit
-    @property = Property.find(params[:id]) || Property.find(params[:Property_id])
-    render layout: "application_dashboard"
+    @property =
+      Property.find(params[:id]) || Property.find(params[:Property_id])
+    render layout: 'application_dashboard'
   end
 
   def update
@@ -36,7 +38,9 @@ class PropertiesController < ApplicationController
     if @property.update(property_params)
       redirect_to dashboard_path, notice: 'Propriété modifiée avec succès'
     else
-      render :edit, status: :unprocessable_entity
+      render :edit,
+             layout: 'application_dashboard',
+             status: :unprocessable_entity
     end
   end
 
@@ -59,6 +63,7 @@ class PropertiesController < ApplicationController
         :fee_price,
         :surface,
         :number_of_rooms,
+        :property_category_id
       )
   end
 end

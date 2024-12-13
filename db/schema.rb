@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_11_073850) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_12_075610) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -129,7 +129,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_11_073850) do
     t.date "buying_date"
     t.integer "surface"
     t.integer "number_of_rooms"
+    t.bigint "property_category_id"
+    t.index ["property_category_id"], name: "index_properties_on_property_category_id"
     t.index ["user_id"], name: "index_properties_on_user_id"
+  end
+
+  create_table "property_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -168,5 +176,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_11_073850) do
   add_foreign_key "favorites", "companies"
   add_foreign_key "favorites", "properties"
   add_foreign_key "list_items", "properties"
+  add_foreign_key "properties", "property_categories"
   add_foreign_key "properties", "users"
 end

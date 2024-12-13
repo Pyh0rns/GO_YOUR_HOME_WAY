@@ -22,6 +22,8 @@ class FavoritesController < ApplicationController
 
     if request.referer.include?(company_path(@favorite.company))
       redirect_to company_path(@favorite.company)
+    elsif request.referer.include?(dashboard_path)
+      redirect_to dashboard_path
     else
       redirect_to companies_path
     end
