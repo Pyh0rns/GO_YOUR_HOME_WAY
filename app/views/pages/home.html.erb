@@ -1,24 +1,33 @@
-
 <div class="banner-home">
-<div class="img-home">
-</div>
-<div class="header-home">
-  <h1>Home Way</h1>
-  <p>You can go your home way!</p>
+  <div class="img-home"></div>
+  <div class="header-home">
+    <h1>Home Way</h1>
+    <p>You can go your home way!</p>
 
-  <% if !current_user %>
-    <%= link_to "Se créer un compte", new_user_session_path, class: "btn-home" %>
-  <% elsif !current_user.properties.empty? %>
-    <%= link_to "Dashboard", dashboard_path, class: "btn-home" %>
-  <% else %>
-    <%= link_to "Ajouter une propriété", new_property_path, class: "btn-home" %>
-  <% end %>
+    <% if !current_user %>
+      <%=
+        link_to 'Se créer un compte', new_user_session_path, class: 'btn-home'
+      %>
+    <% elsif !current_user.properties.empty? %>
+      <%= link_to 'Dashboard', dashboard_path, class: 'btn-home' %>
+    <% else %>
+      <%=
+        link_to 'Ajouter une propriété', new_property_path, class: 'btn-home'
+      %>
+    <% end %>
 
-  <%# <p>A CHANGER PAR ICI</p> %>
-  <br>
-  <br>
-  <br>
-  <br>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi commodi temporibus nisi inventore qui nam, repellendus asperiores necessitatibus quod eaque porro, animi similique officiis ex distinctio quidem voluptates perferendis dolore.</p>
-</div>
+    <h1 class="text-3xl text-red-600 font-bold underline ">Hello world!</h1>
+
+    <%# <p>A CHANGER PAR ICI</p> %>
+    <br />
+    <br />
+    <br />
+    <br />
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi commodi
+      temporibus nisi inventore qui nam, repellendus asperiores necessitatibus
+      quod eaque porro, animi similique officiis ex distinctio quidem voluptates
+      perferendis dolore.
+    </p>
+  </div>
 </div>
