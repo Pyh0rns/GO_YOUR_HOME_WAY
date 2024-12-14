@@ -25,14 +25,22 @@
 
 <%# =============== RECAPITULATIF =============== %>
 <div class="dashboard-card dashboard-recap">
-  <div class="recap-infos-main">
-    <div class="d-flex align-items-start">
-      <h2 class="me-4">Récapitulatif</h2>
-      <%=
-        link_to raw("<i class='fa-solid fa-pen'></i>"),
-                edit_property_path(@property),
-                class: 'btn-update-property'
-      %>
+    <div class="recap-infos-main">
+
+      <div class="d-flex align-items-start">
+        <h2 class="me-4">Récapitulatif</h2>
+        <%= link_to raw("<i class='fa-solid fa-pen'></i>"), edit_property_path(@property), class:"btn-update-property" %>
+      </div>
+      <%= link_to "Download PDF", generate_pdf_properties_path, class: "btn btn-primary" %>
+      <div class="recap-infos">
+        <p><i class="fa-solid fa-location-dot"></i> <%= @property.address %></p>
+        <p><strong>Prix d'achat: </strong> <%= @property.buying_price %> €</p>
+        <p><strong>Date d'achat: </strong><%= @property.buying_date.strftime('%d %b %Y')%></p>
+        <p><strong>Surface: </strong><%= @property.surface %>m²</p>
+        <p><strong>Nombre de pièces: </strong><%= @property.number_of_rooms %></p>
+        <a class="btn-comparer" target="_blank" href="https://www.immobilier.notaires.fr/fr/prix-immobilier?typeLocalisation=DEPARTEMENT&codeInsee=59&neuf=A"><i class="fa-solid fa-arrow-right"></i> Comparer avec son quartier</a>
+      </div>
+
     </div>
 
     <div class="recap-infos">

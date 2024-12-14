@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     resources :work_actions
     resources :list_items, except: :destroy
     resources :appointments, except: :destroy
+    collection do
+      get :generate_pdf
+    end
   end
   resources :list_items, only: :destroy
   resources :appointments, only: :destroy
