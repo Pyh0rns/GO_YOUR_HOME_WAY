@@ -54,7 +54,7 @@ class PropertiesController < ApplicationController
 
   def generate_pdf
     @properties = Property.all
-    @property = Property.find_by(name: "Maison Pottier")
+    @property = Property.find(session[:property_id].to_i)
     pdf = Prawn::Document.new
     pdf.text "Information: #{@property.name}", size: 18, style: :bold
     pdf.text "Description: #{@property.address}", size: 12
@@ -63,7 +63,8 @@ class PropertiesController < ApplicationController
       action.photos.each do |image|
         # REVOIR CET URL SI EN PROD
         # REVOIR CET URL EN METTANT LES INFOS CLOUDINARY DANS LE .ENV ET QUE CHACUN PUISSE LE CHANGER
-        cloudinary_url = "https://res.cloudinary.com/dpkd2outh/image/upload/v1734110308/development/#{image.key}"
+        # cloudinary_url = "https://res.cloudinary.com/dpkd2outh/image/upload/v1734110308/development/#{image.key}"
+        cloudinary_url = "https://res.cloudinary.com/#{ENV['CLOUDINARY_CLOUD_URL']}/image/upload/v1734110308/development/#{image.key}"
         begin
         image_file = URI.open(cloudinary_url)
         tempfile = Tempfile.new(['property_image', '.jpg'])

@@ -1,20 +1,14 @@
 # Pin npm packages by running ./bin/importmap
 
-pin 'application'
-pin '@hotwired/turbo-rails', to: 'turbo.min.js'
-pin '@hotwired/stimulus',
-    to: 'https://ga.jspm.io/npm:@hotwired/stimulus@3.2.2/dist/stimulus.js'
-pin '@hotwired/stimulus-loading', to: 'stimulus-loading.js'
-pin_all_from 'app/javascript/controllers', under: 'controllers'
-# pin "bootstrap", to: "https://ga.jspm.io/npm:bootstrap@5.3.3/dist/js/bootstrap.esm.js"
-# pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.8/lib/index.js"
-pin 'mapbox-gl', to: 'https://ga.jspm.io/npm:mapbox-gl@3.1.2/dist/mapbox-gl.js'
-pin 'process',
-    to:
-      'https://ga.jspm.io/npm:@jspm/core@2.1.0/nodelibs/browser/process-production.js'
-pin '@stimulus-components/carousel',
-    to:
-      'https://ga.jspm.io/npm:@stimulus-components/carousel@6.0.0/dist/stimulus-carousel.mjs'
-pin 'swiper/bundle',
-    to: 'https://ga.jspm.io/npm:swiper@11.1.15/swiper-bundle.mjs'
-pin 'swiper', to: 'https://ga.jspm.io/npm:swiper@11.1.15/swiper.mjs'
+pin "application"
+pin "@hotwired/turbo-rails", to: "turbo.min.js"
+pin "@hotwired/stimulus", to: "https://ga.jspm.io/npm:@hotwired/stimulus@3.2.2/dist/stimulus.js"
+pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
+pin_all_from "app/javascript/controllers", under: "controllers"
+pin "bootstrap", to: "https://ga.jspm.io/npm:bootstrap@5.3.3/dist/js/bootstrap.esm.js"
+pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.8/lib/index.js"
+pin "mapbox-gl", to: "https://ga.jspm.io/npm:mapbox-gl@3.1.2/dist/mapbox-gl.js"
+pin "process", to: "https://ga.jspm.io/npm:@jspm/core@2.1.0/nodelibs/browser/process-production.js"
+pin "@stimulus-components/carousel", to: "https://ga.jspm.io/npm:@stimulus-components/carousel@6.0.0/dist/stimulus-carousel.mjs"
+pin "swiper/bundle", to: "https://ga.jspm.io/npm:swiper@11.1.15/swiper-bundle.mjs"
+pin "swiper", to: "https://ga.jspm.io/npm:swiper@11.1.15/swiper.mjs"
