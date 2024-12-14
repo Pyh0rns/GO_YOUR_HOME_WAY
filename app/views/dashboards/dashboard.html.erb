@@ -1,25 +1,26 @@
 <div class="dashboard-header">
   <div class="header-infos">
-    <h1><%= @property.name %></h1>
-    <p><%= @property.property_category.name %></p>
-
+    <h1 class="text-black-500 text-3xl font-bold"><%= @property.name %></h1>
+    <p class="text-slate-400 italic"><%= @property.property_category.name %></p>
   </div>
+
   <% if @property.user.has_many_properties? %>
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        Changer de propriété
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <div class="dropdown dropdown-bottom">
+      <div tabindex="0" role="button" class="btn m-1">Changer de propriété</div>
+      <ul
+        tabindex="0"
+        class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+      >
         <% current_user.properties.each do |property| %>
-          <%= link_to property.name, dashboard_path(property: property), class: "dropdown-item" %>
+          <%=
+            link_to property.name,
+                    dashboard_path(property: property),
+                    class: 'dropdown-item'
+          %>
         <% end %>
-      </div>
+      </ul>
     </div>
   <% end %>
-
-
-
-
 </div>
 
 <%# =============== RECAPITULATIF =============== %>
@@ -39,21 +40,37 @@
         <p><strong>Nombre de pièces: </strong><%= @property.number_of_rooms %></p>
         <a class="btn-comparer" target="_blank" href="https://www.immobilier.notaires.fr/fr/prix-immobilier?typeLocalisation=DEPARTEMENT&codeInsee=59&neuf=A"><i class="fa-solid fa-arrow-right"></i> Comparer avec son quartier</a>
       </div>
+
     </div>
 
-    <div
-      class="recap-map"
-      data-controller="map"
-      data-map-marker-value="<%= @marker.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-    >
+    <div class="recap-infos">
+      <p><i class="fa-solid fa-location-dot"></i> <%= @property.address %></p>
+      <p><strong>Prix d'achat: </strong> <%= @property.buying_price %> €</p>
+      <p>
+        <strong>Date d'achat: </strong><%=
+          @property.buying_date.strftime('%d %b %Y')
+        %>
+      </p>
+      <p><strong>Surface: </strong><%= @property.surface %>m²</p>
+      <p><strong>Nombre de pièces: </strong><%= @property.number_of_rooms %></p>
+      <a
+        class="btn-comparer"
+        target="_blank"
+        href="https://www.immobilier.notaires.fr/fr/prix-immobilier?typeLocalisation=DEPARTEMENT&codeInsee=59&neuf=A"
+        ><i class="fa-solid fa-arrow-right"></i> Comparer avec son quartier</a
+      >
+    </div>
   </div>
+
+  <div
+    class="recap-map"
+    data-controller="map"
+    data-map-marker-value="<%= @marker.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
 </div>
 
 <%# =============== ENTREPRISES FAV =============== %>
-
-
-
 
 <div class="dashboard-card">
   <h2>Mes entreprises favories</h2>
@@ -86,9 +103,13 @@
       <% @property.list_items.select { |item| item.deadline.to_date >= Date.today }.sort_by(&:deadline).first(3).each do |item| %>
         <p><%= item.title %>, avant le <%= item.deadline %></p>
       <% end %>
-        <%= link_to "Calendrier", calendar_path(property: @property), class: "btn-dashboard" %>
-        <a class="btn-dashboard" href="#">Voir tout</a>
-        <%#= link_to "Voir tout", lists_path, class: "btn-dashboard" %>
+      <%=
+        link_to 'Calendrier',
+                calendar_path(property: @property),
+                class: 'btn-dashboard'
+      %>
+      <a class="btn-dashboard" href="#">Voir tout</a>
+      <%#= link_to "Voir tout", lists_path, class: "btn-dashboard" %>
     </div>
   </div>
   <div>
@@ -97,12 +118,10 @@
       <% @property.appointments.select { |appt| appt.date >= Date.today }.sort_by(&:date).first(3).each do |appt| %>
         <p><%= appt.company.name %>, le <%= appt.date %></p>
       <% end %>
-        <a class="btn-dashboard" href="#">Calendrier</a>
+      <a class="btn-dashboard" href="#">Calendrier</a>
     </div>
-
   </div>
 </div>
-
 
 <%# =============== DEPENSES =============== %>
 
