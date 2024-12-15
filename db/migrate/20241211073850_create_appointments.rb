@@ -1,4 +1,4 @@
-class CreateAppointments < ActiveRecord::Migration[7.1]
+class CreateAppointments < ActiveRecord::Migration[8.0]
   def change
     create_table :appointments do |t|
       t.references :company, null: false, foreign_key: true

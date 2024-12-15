@@ -1,7 +1,7 @@
 <%= render "shared/fab" %>
 <nav
   id="bottom-bar"
-  class="fixed-bottom bg-white border-top"
+  class="fixed-bottom bg-black border-top"
   data-navigation-target="bottomNav"
 >
   <ul class="d-flex justify-content-around list-unstyled m-0 p-1">
@@ -112,7 +112,7 @@
         data-action="click->dropdown#toggle"
         data-navigation-target="settingsButton"
       >
-        <%= image_tag 'setting', width: 20, height: 20 %>
+        <%= image_tag 'setting.png', width: 20, height: 20 %>
         <span class="small">Paramètres</span>
       </div>
 
@@ -123,7 +123,7 @@
         style="display: none;"
       >
         <ul class="list-unstyled m-0 p-0">
-          
+
             <%=
               link_to 'Log out',
                       destroy_company_session_path,
@@ -133,11 +133,11 @@
                       class: 'nav-link dropdown-item'
             %>
           </li>
-          
+
            <%= link_to 'Ajouter un bien', new_property_path, class:"small dropdown-item up" %>
-           
+
            <%# ? mettre le modifier et supprimer directement sur la card de la maison  %>
-          
+
         </ul>
       </div>
     </li>

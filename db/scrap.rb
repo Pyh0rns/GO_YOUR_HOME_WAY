@@ -11,12 +11,10 @@ html_file = URI.parse(url).read
 html_doc = Nokogiri::HTML.parse(html_file)
 
 html_doc.search(".panel").each do |element|
-
   name = element.search("h2").text.strip
   address = element.search(".address").text.strip
   category = "Electricité"
-  companies << {name: name, address: address, category: category}
-
+  companies << { name: name, address: address, category: category }
 end
 
 # PLOMBERIE
@@ -26,12 +24,10 @@ html_file = URI.parse(url).read
 html_doc = Nokogiri::HTML.parse(html_file)
 
 html_doc.search(".panel").each do |element|
-
   name = element.search("h2").text.strip
   address = element.search(".address").text.strip
   category = "Plomberie"
-  companies << {name: name, address: address, category: category}
-
+  companies << { name: name, address: address, category: category }
 end
 
 companies_hash = {

@@ -1,4 +1,4 @@
-class AddInfosToCompanies < ActiveRecord::Migration[7.1]
+class AddInfosToCompanies < ActiveRecord::Migration[8.0]
   def change
     add_column :companies, :name, :string
     add_column :companies, :address, :string

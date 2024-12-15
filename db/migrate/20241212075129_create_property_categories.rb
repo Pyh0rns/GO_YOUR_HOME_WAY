@@ -1,4 +1,4 @@
-class CreatePropertyCategories < ActiveRecord::Migration[7.1]
+class CreatePropertyCategories < ActiveRecord::Migration[8.0]
   def change
     create_table :property_categories do |t|
       t.string :name

@@ -1,5 +1,4 @@
 class DocumentsController < ApplicationController
-
   def new
     @property = Property.find(params[:property_id])
     @document = Document.new

@@ -1,23 +1,5 @@
 class ApplicationController < ActionController::Base
+  # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
+  allow_browser versions: :modern
   before_action :authenticate_user!
-  before_action :configure_permitted_parameters, if: :devise_controller?
-
-  def after_sign_in_path_for(resource)
-    if current_company
-      dashboard_pro_path
-    elsif current_user.properties.empty?
-      session[:property_id] = nil
-      root_path
-    elsif current_user
-      session[:property_id] = nil
-      dashboard_path
-    end
-  end
-
-  def configure_permitted_parameters
-    # For additional fields in app/views/devise/registrations/new.html.erb
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :address, :phone_numer])
-    # For additional in app/views/devise/registrations/edit.html.erb
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :address, :phone_numer])
-  end
 end

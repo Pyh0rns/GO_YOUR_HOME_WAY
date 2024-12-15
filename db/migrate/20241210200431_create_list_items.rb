@@ -1,4 +1,4 @@
-class CreateListItems < ActiveRecord::Migration[7.1]
+class CreateListItems < ActiveRecord::Migration[8.0]
   def change
     create_table :list_items do |t|
       t.string :title
