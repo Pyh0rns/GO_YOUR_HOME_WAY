@@ -42,3 +42,4 @@ pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
 
 # Start Tailwind CSS in development
 plugin :tailwindcss if ENV.fetch("RAILS_ENV", "development") == "development"
+
